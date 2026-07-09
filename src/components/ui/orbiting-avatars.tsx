@@ -11,6 +11,10 @@ type Avatar = {
   color: string;
 };
 
+function stableOrbitCoordinate(value: number) {
+  return Number(value.toFixed(3));
+}
+
 export function OrbitingAvatarsCTA({
   title,
   description,
@@ -35,8 +39,8 @@ export function OrbitingAvatarsCTA({
       <div className="absolute inset-0 -z-0 hidden animate-[orbit_46s_linear_infinite] md:block">
         {avatars.map((avatar, index) => {
           const angle = (index / avatars.length) * Math.PI * 2;
-          const x = Math.cos(angle) * 310;
-          const y = Math.sin(angle) * 210;
+          const x = stableOrbitCoordinate(Math.cos(angle) * 310);
+          const y = stableOrbitCoordinate(Math.sin(angle) * 210);
           return (
             <span
               key={avatar.label}

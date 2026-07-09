@@ -16,8 +16,8 @@ import { ShinyLink } from "@/components/ui/shiny-button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { MobileDashboardPreview } from "@/components/mobile-dashboard-preview";
 import { ColorBand, PageShell, Pill, SectionIntro, SparkleBadge } from "@/components/site-chrome";
+import { GrowthAgentRobotOrbit } from "@/components/ui/growth-agent-robot-orbit";
 import {
-  agents,
   blogPosts,
   faqs,
   features,
@@ -34,7 +34,6 @@ const fadeUp = {
 const mondayColors = ["#6161ff", "#00c875", "#ffcb00", "#ff5a5f", "#00d2ff"];
 
 export function MarketingHome() {
-  const coreAgents = agents.slice(0, 6);
   const coreFeatures = features.slice(0, 4);
 
   return (
@@ -122,23 +121,7 @@ export function MarketingHome() {
 
         <section id="agents" className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <SectionIntro
-              eyebrow="Agent architecture"
-              title="A small sales team made of focused agents."
-              text="Each agent owns one job. The command center shows what is ready, blocked, or waiting for human review."
-            />
-            <div className="mt-8 grid gap-3 sm:mt-12 md:grid-cols-2 xl:grid-cols-3">
-              {coreAgents.map((agent, index) => (
-                <GlowCard key={agent.name} glowColor={index % 3 === 0 ? "purple" : index % 3 === 1 ? "green" : "orange"} className="p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <agent.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
-                    <Pill tone={index % 3 === 1 ? "green" : "blue"}>Agent</Pill>
-                  </div>
-                  <p className="mt-5 text-lg font-black text-white sm:mt-7">{agent.name}</p>
-                  <p className="mt-2 text-sm font-medium leading-6 text-slate-400">{agent.description}</p>
-                </GlowCard>
-              ))}
-            </div>
+            <GrowthAgentRobotOrbit />
           </div>
         </section>
 
