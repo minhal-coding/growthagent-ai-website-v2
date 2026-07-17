@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GrowthAgent AI Website V2
 
-## Getting Started
+This repository is the isolated V2 development environment for the GrowthAgent AI public website.
 
-First, run the development server:
+It was initialized from [`minhal-coding/growthagent-ai-site`](https://github.com/minhal-coding/growthagent-ai-site) at source commit `6202928e83f89626bdbec4bc1447a7c0e434eba4`. The copy preserves the original site's visual and functional baseline while allowing the V2 positioning, content, navigation, accessibility, and SEO work to be developed independently.
+
+The original repository, its branches, its GitHub Pages workflow, and the current public website are not deployment targets for this project.
+
+## Stack
+
+- Next.js 15 App Router with static export
+- React 19 and TypeScript
+- Tailwind CSS 4
+- Framer Motion and Spline for motion and the robot experience
+- npm (`package-lock.json`)
+
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
-## Learn More
+The repository currently has no automated unit or end-to-end test suite. Rendered desktop and mobile validation is performed separately as part of the V2 review.
 
-To learn more about Next.js, take a look at the following resources:
+## Routes in the copied baseline
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/`
+- `/about`
+- `/agents`
+- `/analytics`
+- `/blog`
+- `/compliance`
+- `/contact`
+- `/demo`
+- `/faq`
+- `/lead-research`
+- `/pricing`
+- `/privacy`
+- `/responsible-ai`
+- `/security`
+- `/terms`
+- `/use-cases`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment safety
 
-## Deploy on Vercel
+The inherited GitHub Pages deployment authority is intentionally not included. GitHub Actions validates lint, types, and the production build but does not deploy.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If an isolated preview is approved later, configure it against this repository only, use a distinct preview URL, and do not reuse production DNS or production deployment credentials.
