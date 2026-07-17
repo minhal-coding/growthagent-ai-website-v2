@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Application } from "@splinetool/runtime";
+import type { Application as SplineApplication } from "@splinetool/runtime";
 
 export function SplineScene({
   scene,
@@ -17,11 +17,15 @@ export function SplineScene({
     if (!canvasRef.current) return;
 
     let cancelled = false;
-    const app = new Application(canvasRef.current, { renderMode: "continuous" });
+    let app: SplineApplication | undefined;
 
     setStatus("loading");
-    app
-      .load(scene)
+    void import("@splinetool/runtime")
+      .then(({ Application }) => {
+        if (cancelled || !canvasRef.current) return;
+        app = new Application(canvasRef.current, { renderMode: "continuous" });
+        return app.load(scene);
+      })
       .then(() => {
         if (!cancelled) setStatus("ready");
       })
@@ -31,7 +35,7 @@ export function SplineScene({
 
     return () => {
       cancelled = true;
-      app.dispose();
+      app?.dispose();
     };
   }, [scene]);
 

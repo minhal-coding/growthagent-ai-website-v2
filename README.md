@@ -11,7 +11,7 @@ The original repository, its branches, its GitHub Pages workflow, and the curren
 - Next.js 15 App Router with static export
 - React 19 and TypeScript
 - Tailwind CSS 4
-- Framer Motion and Spline for motion and the robot experience
+- CSS motion and a lazy-loaded Spline robot experience
 - npm (`package-lock.json`)
 
 ## Local development
@@ -31,26 +31,22 @@ npm run typecheck
 npm run build
 ```
 
-The repository currently has no automated unit or end-to-end test suite. Rendered desktop and mobile validation is performed separately as part of the V2 review.
+The repository currently has no automated unit test suite. Rendered desktop and mobile validation is performed with Playwright as part of the V2 review.
 
-## Routes in the copied baseline
+## V2 routes
 
 - `/`
 - `/about`
-- `/agents`
-- `/analytics`
-- `/blog`
-- `/compliance`
 - `/contact`
-- `/demo`
-- `/faq`
-- `/lead-research`
-- `/pricing`
+- `/early-access`
+- `/florida-launch`
+- `/how-it-works`
+- `/product`
 - `/privacy`
-- `/responsible-ai`
-- `/security`
 - `/terms`
-- `/use-cases`
+- `/trust-safety`
+
+The copied baseline routes and the full rebuild record are documented in [`docs/V2_REBUILD_REPORT.md`](docs/V2_REBUILD_REPORT.md).
 
 ## Deployment safety
 

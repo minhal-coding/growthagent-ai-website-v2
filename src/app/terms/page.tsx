@@ -1,8 +1,9 @@
 import { LegalPage } from "@/components/legal-page";
 
 export const metadata = {
-  title: "Terms of Service",
-  description: "The basic rules for using GrowthAgent AI responsibly as a sales automation platform.",
+  title: "Terms of Use",
+  description: "Terms for using the GrowthAgent AI Florida construction early-access website.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function Terms() {

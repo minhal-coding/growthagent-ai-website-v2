@@ -1,30 +1,18 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Menu, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Menu } from "lucide-react";
 
+import { navigation } from "@/components/site-data";
 import { cn } from "@/lib/utils";
-import { DottedShaderSurface } from "@/components/ui/dotted-shader-surface";
-import { SpotlightCard } from "@/components/ui/spotlight-card";
 
-const nav = [
-  { label: "Product", href: "/#product" },
-  { label: "Agents", href: "/#agents" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
-];
-
-export function Logo() {
+export function BrandMark() {
   return (
-    <Link href="/" className="group flex items-center gap-3" aria-label="GrowthAgent AI home">
-      <span className="relative grid size-11 shrink-0 place-items-center rounded-2xl border border-[#d4af37]/45 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.24),transparent_30%),linear-gradient(145deg,#10141d,#050608)] shadow-[0_16px_38px_rgba(212,175,55,0.18)] transition group-hover:-rotate-3 group-hover:border-[#d4af37]/80">
-        <span className="absolute inset-2 rounded-xl border border-[#d4af37]/25" />
-        <ArrowRight className="relative size-5 -rotate-45 text-[#f6d77a]" />
+    <Link href="/" className="group inline-flex items-center gap-3" aria-label="GrowthAgent AI home">
+      <span className="relative grid size-10 shrink-0 place-items-center rounded-xl border border-[#d4af37]/55 bg-[#0a0d13] text-[#f2c94c] shadow-[0_10px_30px_rgba(212,175,55,0.12)]">
+        <span className="absolute inset-2 rounded-md border border-[#d4af37]/25" />
+        <ArrowRight className="relative size-4 -rotate-45 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
       </span>
-      <span className="leading-tight">
-        <span className="block text-base font-black tracking-tight text-white">GrowthAgentAI</span>
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d8b86a]">
-          by Yam Automation
-        </span>
+      <span className="text-base font-extrabold tracking-[-0.025em] text-white sm:text-lg">
+        GrowthAgent <span className="text-[#42d6c7]">AI</span>
       </span>
     </Link>
   );
@@ -32,59 +20,40 @@ export function Logo() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#030407]/84 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <Logo />
-        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.22)] lg:flex">
-          {nav.map((item) => (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05070d]/92 backdrop-blur-xl">
+      <div className="mx-auto flex min-h-18 max-w-[90rem] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
+        <BrandMark />
+        <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
+          {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
+              className="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.06] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#42d6c7]"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <Link
-            href="/contact"
-            className="hidden rounded-full px-4 py-2 text-sm font-bold text-slate-300 transition hover:bg-white/10 hover:text-white sm:block"
-          >
-            Sign in
-          </Link>
-          <Link
-            href="/contact"
-            className="hidden h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-black text-slate-950 shadow-[0_16px_34px_rgba(97,97,255,0.22)] transition hover:-translate-y-0.5 hover:bg-[#8f8fff] sm:inline-flex"
-          >
-            Book a Demo
-            <ArrowRight data-icon="inline-end" />
+        <div className="flex items-center gap-3">
+          <Link href="/early-access" className="ga-button max-sm:!hidden">
+            Join Florida Early Access
+            <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
           <details className="group relative lg:hidden">
-            <summary
-              aria-label="Open menu"
-              className="grid size-10 cursor-pointer list-none place-items-center rounded-full border border-white/10 bg-white/[0.06] text-slate-200 marker:hidden"
-            >
-              <Menu className="size-5" />
+            <summary className="grid size-11 cursor-pointer list-none place-items-center rounded-xl border border-white/15 bg-white/[0.04] text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#42d6c7]" aria-label="Open navigation menu">
+              <Menu className="size-5" aria-hidden="true" />
             </summary>
-            <div className="absolute right-0 top-12 grid w-56 gap-1 rounded-3xl border border-white/10 bg-[#07111f]/95 p-2 shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
-              {nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-200 transition hover:bg-white/10 hover:text-white"
-                >
+            <nav aria-label="Mobile navigation" className="absolute right-0 top-14 w-[min(21rem,calc(100vw-2.5rem))] rounded-2xl border border-white/12 bg-[#0a0d13] p-3 shadow-2xl">
+              {navigation.map((item) => (
+                <Link key={item.href} href={item.href} className="block rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/[0.06]">
                   {item.label}
                 </Link>
               ))}
-              <div className="my-1 h-px bg-white/10" />
-              <Link
-                href="/contact"
-                className="rounded-2xl bg-white px-4 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-[#8f8fff]"
-              >
-                Book a Demo
+              <Link href="/early-access" className="ga-button mt-2 flex w-full justify-center">
+                Join Florida Early Access
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-            </div>
+            </nav>
           </details>
         </div>
       </div>
@@ -92,53 +61,50 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
-  const groups = [
-    { title: "Company", links: [["About", "/about"], ["Contact", "/contact"], ["Book Demo", "/demo"], ["Security", "/security"]] },
-    { title: "Product", links: [["Lead Research", "/lead-research"], ["Agents", "/agents"], ["Pricing", "/pricing"], ["Analytics", "/analytics"]] },
-    { title: "Resources", links: [["Blog", "/blog"], ["FAQ", "/faq"], ["Use Cases", "/use-cases"], ["Demo", "/demo"]] },
-    { title: "Legal", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Responsible AI", "/responsible-ai"], ["Compliance", "/compliance"]] },
-  ];
+const footerGroups = [
+  { title: "Explore", links: [["Product", "/product"], ["How It Works", "/how-it-works"], ["Florida Launch", "/florida-launch"]] },
+  { title: "Company", links: [["About", "/about"], ["Early Access", "/early-access"], ["Contact", "/contact"]] },
+  { title: "Trust", links: [["Trust & Safety", "/trust-safety"], ["Privacy", "/privacy"], ["Terms", "/terms"]] },
+];
 
+export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#030407]/94">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
-        <div className="flex flex-col gap-5">
-          <Logo />
-          <p className="max-w-sm text-sm leading-6 text-slate-400">
-            GrowthAgent AI gives teams an autonomous revenue operating system for research, enrichment, outreach,
-            reply tracking, follow-up planning, meetings, and CRM hygiene.
+    <footer className="border-t border-white/10 bg-[#03050a] px-5 py-14 sm:px-8 lg:px-12">
+      <div className="mx-auto grid max-w-[90rem] gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div>
+          <BrandMark />
+          <p className="mt-5 max-w-md text-sm leading-6 text-slate-400">
+            Early-access construction opportunity intelligence launching in Florida. Public-source evidence, explicit scope, and human review.
           </p>
-          <div className="flex flex-wrap gap-2">
-            {["Human review", "Reply aware", "Audit logs"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-bold text-slate-300">
-                <CheckCircle2 className="size-3 text-[#00c875]" />
+          <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-slate-300">
+            {['Source-backed', 'Florida launch', 'Human reviewed'].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5">
+                <CheckCircle2 className="size-3.5 text-[#42d6c7]" aria-hidden="true" />
                 {item}
               </span>
             ))}
           </div>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {groups.map((group) => (
-            <details key={group.title} className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:border-0 sm:bg-transparent sm:p-0" open>
-              <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-black text-white marker:hidden sm:pointer-events-none">
-                {group.title}
-                <span className="text-slate-500 transition group-open:rotate-45 sm:hidden">+</span>
-              </summary>
-              <div className="mt-3 flex flex-col gap-3">
-                {group.links.map(([link, href]) => (
-                  <Link key={link} href={href} className="min-h-9 text-sm font-medium text-slate-400 transition hover:text-white">
-                    {link}
-                  </Link>
+        <div className="grid gap-8 sm:grid-cols-3">
+          {footerGroups.map((group) => (
+            <div key={group.title}>
+              <h2 className="text-sm font-bold text-white">{group.title}</h2>
+              <ul className="mt-4 space-y-3">
+                {group.links.map(([label, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="text-sm text-slate-400 transition hover:text-white">
+                      {label}
+                    </Link>
+                  </li>
                 ))}
-              </div>
-            </details>
+              </ul>
+            </div>
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <span>GrowthAgent AI - 2026. Designed and automated by Yam Automation.</span>
-        <span>Built for responsible outbound automation.</span>
+      <div className="mx-auto mt-12 flex max-w-[90rem] flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 GrowthAgent AI. V2 early-access preview.</p>
+        <p>Florida construction focus. Coverage is not statewide.</p>
       </div>
     </footer>
   );
@@ -146,93 +112,47 @@ export function SiteFooter() {
 
 export function PageShell({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div
-      className={cn(
-        "growthagent-dark relative isolate min-h-screen overflow-hidden bg-[#030407] text-white",
-        "bg-[radial-gradient(circle_at_16%_5%,rgba(97,97,255,0.28),transparent_30rem),radial-gradient(circle_at_82%_0%,rgba(42,117,255,0.2),transparent_32rem),radial-gradient(circle_at_72%_40%,rgba(0,200,117,0.1),transparent_28rem),linear-gradient(180deg,#030407_0%,#050712_46%,#020308_100%)]",
-        className,
-      )}
-    >
-      <DottedShaderSurface className="z-0 opacity-95" />
-      <div className="relative z-10">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-      </div>
-      <div className="fixed inset-x-3 bottom-3 z-50 sm:hidden">
-        <Link
-          href="/contact"
-          className="flex h-12 items-center justify-center gap-2 rounded-full border border-white/10 bg-white text-sm font-black text-slate-950 shadow-[0_18px_60px_rgba(0,0,0,0.48)]"
-        >
-          Book a Demo
-          <ArrowRight className="size-4" />
-        </Link>
-      </div>
+    <div className={cn("growthagent-site min-h-screen bg-[#05070d] text-white", className)}>
+      <a href="#main-content" className="sr-only z-[100] rounded-md bg-white px-4 py-2 text-slate-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+        Skip to content
+      </a>
+      <SiteHeader />
+      {children}
+      <SiteFooter />
     </div>
   );
 }
 
-export function SectionIntro({
+export function SectionHeading({
   title,
   text,
-  align = "center",
-  eyebrow,
+  label,
+  align = "left",
+  className,
 }: {
   title: string;
-  text: string;
-  align?: "center" | "left";
-  eyebrow?: string;
+  text?: string;
+  label?: string;
+  align?: "left" | "center";
+  className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-4", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl")}>
-      {eyebrow ? (
-        <span className={cn("text-xs font-black uppercase tracking-[0.18em] text-[#6161ff]", align === "center" ? "mx-auto" : "")}>
-          {eyebrow}
-        </span>
-      ) : null}
-      <h2 className="text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">{title}</h2>
-      <p className="text-base leading-7 text-slate-300 sm:text-lg">{text}</p>
+    <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
+      {label ? <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#42d6c7]">{label}</p> : null}
+      <h2 className="text-balance text-3xl font-extrabold leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">{title}</h2>
+      {text ? <p className="mt-5 text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">{text}</p> : null}
     </div>
   );
 }
 
-export function Pill({
-  children,
-  tone = "blue",
-  className,
-}: {
-  children: React.ReactNode;
-  tone?: "blue" | "green" | "red" | "yellow";
-  className?: string;
-}) {
-  const tones = {
-    blue: "border-[#6161ff]/30 bg-[#6161ff]/14 text-[#b8bdff]",
-    green: "border-[#00c875]/30 bg-[#00c875]/12 text-[#8ff8c7]",
-    red: "border-[#ff5a5f]/30 bg-[#ff5a5f]/12 text-[#ffb4b6]",
-    yellow: "border-[#ffcb00]/30 bg-[#ffcb00]/14 text-[#ffe58a]",
-  };
-  return <span className={cn("rounded-full border px-3 py-1 text-xs font-black", tones[tone], className)}>{children}</span>;
-}
-
-export function ColorBand({ children, className }: { children: React.ReactNode; className?: string }) {
+export function PageIntro({ title, text, label }: { title: string; text: string; label?: string }) {
   return (
-    <SpotlightCard
-      glowColor="purple"
-      className={cn(
-        "rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl",
-        className,
-      )}
-    >
-      {children}
-    </SpotlightCard>
-  );
-}
-
-export function SparkleBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-slate-200 shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
-      <Sparkles className="size-4 text-[#ffcb00]" />
-      {children}
-    </span>
+    <section className="border-b border-white/10 px-5 py-16 sm:px-8 sm:py-24 lg:px-12">
+      <div className="mx-auto max-w-[90rem]">
+        {label ? <p className="mb-5 text-xs font-bold uppercase tracking-[0.22em] text-[#42d6c7]">{label}</p> : null}
+        <h1 className="max-w-5xl text-balance text-4xl font-extrabold leading-[1.02] tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">{title}</h1>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">{text}</p>
+      </div>
+    </section>
   );
 }

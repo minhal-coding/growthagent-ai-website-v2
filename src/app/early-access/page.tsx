@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 import { EarlyAccessPage } from "@/components/early-access-page";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact GrowthAgent AI about Florida construction early access and pilot review.",
+  title: "Join Florida Early Access",
+  description: "Request early access to GrowthAgent AI's Florida construction opportunity intelligence launch.",
   alternates: { canonical: "/early-access" },
-  robots: { index: false, follow: true },
 };
 
-export default function ContactPage() {
+export default function EarlyAccessRoute() {
   return <EarlyAccessPage />;
 }

@@ -1,166 +1,121 @@
 import {
-  BarChart3,
-  CalendarClock,
-  CheckCircle2,
-  Database,
-  LineChart,
-  MailCheck,
-  MessageSquareReply,
-  Radar,
-  RefreshCw,
+  ClipboardCheck,
+  ExternalLink,
+  FileSearch,
+  MapPinned,
+  Scale,
   Search,
   ShieldCheck,
-  Sparkles,
-  Target,
-  Users,
-  Workflow,
+  SlidersHorizontal,
+  UserCheck,
 } from "lucide-react";
 
-export const logos = ["Northstar", "Meridian", "Cobalt", "Vertex", "Atlas", "Nova"];
-
-export const problems = [
-  "Research takes time",
-  "Follow-ups are forgotten",
-  "CRM becomes messy",
-  "Teams waste hours",
+export const navigation = [
+  { label: "Product", href: "/product" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Florida Launch", href: "/florida-launch" },
+  { label: "Trust & Safety", href: "/trust-safety" },
+  { label: "About", href: "/about" },
 ];
 
-export const agents = [
+export const workflowSteps = [
   {
-    name: "Research Agent",
+    number: "01",
+    title: "Discover",
+    text: "Review configured public sources for construction-relevant records.",
+    detail: "Permits, planning records, and procurement notices",
     icon: Search,
-    description: "Finds accounts, schools, companies, events, programs, and buying signals across public sources.",
   },
   {
-    name: "Data Enrichment Agent",
-    icon: Database,
-    description: "Adds websites, contact pages, public emails, source evidence, fit reasons, and quality scores.",
+    number: "02",
+    title: "Verify",
+    text: "Keep the public source link and evidence beside the opportunity.",
+    detail: "Source URL, record context, and location",
+    icon: ShieldCheck,
   },
   {
-    name: "Personalization Agent",
-    icon: Sparkles,
-    description: "Turns lead context into tailored messaging that sounds professional and relevant.",
+    number: "03",
+    title: "Rank",
+    text: "Organize records around trade fit, service area, and review priorities.",
+    detail: "Explainable fit signals, not a black box",
+    icon: SlidersHorizontal,
   },
   {
-    name: "Outreach Agent",
-    icon: MailCheck,
-    description: "Sends approved email campaigns only when sender, domain, suppression, and compliance checks pass.",
-  },
-  {
-    name: "Reply Agent",
-    icon: MessageSquareReply,
-    description: "Captures replies, classifies intent, pauses sequences, and drafts the next safe response.",
-  },
-  {
-    name: "Follow-up Agent",
-    icon: RefreshCw,
-    description: "Plans follow-ups, prevents duplicate outreach, and keeps every lead moving without spammy pressure.",
-  },
-  {
-    name: "Meeting Scheduler Agent",
-    icon: CalendarClock,
-    description: "Detects buying intent, suggests booking steps, and prepares meeting-ready opportunities.",
-  },
-  {
-    name: "CRM Agent",
-    icon: Users,
-    description: "Keeps status, messages, audit logs, owners, and next actions synced in the CRM layer.",
-  },
-  {
-    name: "Analytics Agent",
-    icon: BarChart3,
-    description: "Tracks pipeline health, reply rates, campaign risk, revenue forecast, and agent performance.",
+    number: "04",
+    title: "Human review",
+    text: "A person confirms the details, adds context, and decides the next step.",
+    detail: "No autonomous outreach or fabricated contacts",
+    icon: UserCheck,
   },
 ];
 
-export const features = [
-  { title: "AI Lead Research", icon: Radar, text: "Autonomously finds relevant prospects from target segments." },
-  { title: "Data Enrichment", icon: Database, text: "Adds emails, websites, contact pages, and source evidence." },
-  { title: "Personalized Outreach", icon: Sparkles, text: "Writes brand-safe emails for each account and role." },
-  { title: "Email Automation", icon: MailCheck, text: "Sends only after approval, suppression, and sender checks." },
-  { title: "Follow-Up Queue", icon: RefreshCw, text: "Plans next steps and stops when a lead replies." },
-  { title: "CRM Sync", icon: Workflow, text: "Keeps every lead, campaign, message, and audit event organized." },
-  { title: "Meeting Scheduling", icon: CalendarClock, text: "Turns interested replies into meeting-ready opportunities." },
-  { title: "Analytics Dashboard", icon: LineChart, text: "Shows pipeline, response rate, revenue forecast, and bottlenecks." },
+export const sourceTypes = [
+  { title: "Permit records", text: "Public permit information where access and reuse are appropriate.", icon: FileSearch },
+  { title: "Planning information", text: "Public agendas, applications, and planning records selected for the launch.", icon: MapPinned },
+  { title: "Procurement notices", text: "Publicly posted solicitations and supporting procurement information.", icon: ExternalLink },
 ];
 
-export const useCases = ["Conferences", "Universities", "Events", "Consulting", "Agencies", "SaaS", "Training Companies"];
-
-export const benefits = [
-  { title: "Save Time", text: "Replace hours of manual prospecting and CRM cleanup with automated agent work." },
-  { title: "Increase Replies", text: "Use contextual research and sharper personalization before sending." },
-  { title: "Automate Sales", text: "Run research, outreach, reply capture, and follow-up from one command center." },
-  { title: "Reduce Manual Work", text: "Let operators review the highest-risk moments instead of doing every task." },
-  { title: "Scale Outreach", text: "Move from founder-led outreach to a repeatable growth system." },
+export const trustPrinciples = [
+  {
+    title: "Source-backed",
+    text: "Opportunity context stays connected to a public record link for operator review.",
+    meta: "Evidence captured",
+    icon: ShieldCheck,
+  },
+  {
+    title: "No fabricated contacts",
+    text: "The launch does not invent people, roles, email addresses, or contact details.",
+    meta: "Contact evidence required",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Human-reviewed workflows",
+    text: "A person decides whether a record is relevant and what, if anything, happens next.",
+    meta: "Operator decision",
+    icon: UserCheck,
+  },
+  {
+    title: "Scope stays explicit",
+    text: "Florida construction is the launch focus. Source and county coverage will expand only when verified.",
+    meta: "Launching soon",
+    icon: Scale,
+  },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      "GrowthAgent AI gave our small team a pipeline rhythm we could never keep manually. The reply capture and human review flow changed everything.",
-    name: "Aisha Khan",
-    role: "Director, Global Youth Summit",
-  },
-  {
-    quote:
-      "The agent architecture is the reason it feels different. Research, enrichment, outreach, and CRM updates are not trapped in separate tools.",
-    name: "Marcus Lee",
-    role: "Founder, EventOps Studio",
-  },
-  {
-    quote:
-      "It feels like a junior growth team that never forgets the follow-up and always leaves an audit trail.",
-    name: "Elena Torres",
-    role: "Growth Lead, EduLaunch",
-  },
+export const launchAreas = ["Orange County", "Seminole County", "Osceola County", "Central Florida"];
+
+export const constructionTrades = [
+  "General contracting",
+  "Division 09 — Finishes",
+  "Concrete and masonry",
+  "Mechanical, electrical, and plumbing",
+  "Site work and civil",
+  "Specialty trades",
 ];
 
 export const faqs = [
-  ["What is GrowthAgent AI?", "GrowthAgent AI is an AI sales automation platform that operates like a small autonomous sales team."],
-  ["Who is it for?", "It is built for conferences, education programs, agencies, SaaS teams, events, consultants, and training companies."],
-  ["Does it find leads automatically?", "Yes. It can research target audiences, discover accounts, enrich records, and add them to a pipeline."],
-  ["Can it send emails?", "Yes, when a verified sender is configured and campaign safety checks pass."],
-  ["Does it reply automatically?", "It can draft replies and identify intent. For safety, human approval can be required before sending."],
-  ["Can it stop follow-ups when someone replies?", "Yes. Reply capture marks conversations as replied and blocks blind follow-ups."],
-  ["Does it replace a CRM?", "It can maintain CRM records, but it can also sync with an existing CRM in a commercial setup."],
-  ["Can I use my own brand voice?", "Yes. Campaigns can use your positioning, offer, audience, and tone rules."],
-  ["What data does it store?", "It stores leads, source evidence, campaigns, messages, replies, meetings, audit logs, and settings."],
-  ["Is it safe for outbound?", "It is designed with suppression lists, approval gates, audit logs, and sender checks."],
-  ["Can it use Gmail?", "Yes, Gmail can be used for reply capture or sending when properly connected."],
-  ["Can it use Outlook?", "Outlook support can be configured through Microsoft mail credentials or OAuth flows."],
-  ["Does it need a sending domain?", "For real outreach at scale, yes. A verified domain improves deliverability and trust."],
-  ["Can it schedule meetings?", "It can detect meeting intent and prepare scheduling actions. Calendar integration can be added for direct booking."],
-  ["Can it work 24/7?", "Yes, with cloud workers, scheduled jobs, and mailbox sync enabled."],
-  ["Does it use AI agents?", "Yes. Specialized agents handle research, enrichment, personalization, outreach, replies, follow-ups, CRM, and analytics."],
-  ["Can humans approve risky actions?", "Yes. Human review is part of the control-room workflow."],
-  ["Can it be sold to companies?", "The platform is designed for commercial direction, with security and multi-tenant controls as the next hardening layer."],
-  ["How fast can it be deployed?", "A demo deployment can be live quickly. Production rollout depends on email domain, CRM, data, and compliance setup."],
-  ["What makes it different?", "It combines lead discovery, contact enrichment, outreach, reply intelligence, and CRM operations in one agent command center."],
-];
-
-export const blogPosts = [
-  {
-    title: "Why autonomous outbound needs an operator control room",
-    category: "Agent Ops",
-    excerpt: "A practical model for letting AI agents work quickly while humans approve the moments that carry risk.",
-  },
-  {
-    title: "The future of small sales teams is agentic",
-    category: "Strategy",
-    excerpt: "How founders can scale research, outreach, and follow-up before hiring a full growth team.",
-  },
-  {
-    title: "Reply capture is the difference between automation and spam",
-    category: "Deliverability",
-    excerpt: "Why every serious outbound system must stop follow-ups when a prospect answers.",
-  },
-];
-
-export const securityPoints = [
-  { title: "Human approval gates", icon: ShieldCheck },
-  { title: "Suppression list checks", icon: CheckCircle2 },
-  { title: "Audit logs for every action", icon: Database },
-  { title: "Workspace isolation", icon: Target },
-  { title: "Sender health checks", icon: MailCheck },
-  { title: "Reply-aware automation", icon: MessageSquareReply },
+  [
+    "Is GrowthAgent AI live nationwide?",
+    "No. GrowthAgent AI is launching in Florida for construction teams through an early-access and pilot process.",
+  ],
+  [
+    "Which public sources are included?",
+    "The launch is evaluating selected permit, planning, and procurement sources. A source is described as active only after its workflow has been verified.",
+  ],
+  [
+    "Does the platform create contact information?",
+    "No. GrowthAgent AI does not fabricate names, roles, email addresses, or phone numbers. Contact details require source evidence and review.",
+  ],
+  [
+    "Does it contact opportunities automatically?",
+    "No autonomous outreach is promised for the Florida launch. The current website describes discovery, evidence, ranking, and human review.",
+  ],
+  [
+    "Is the demonstration record real?",
+    "No. Records shown on this website are clearly labeled Demonstration Data and illustrate the review experience without representing production activity.",
+  ],
+  [
+    "How do I request early access?",
+    "Share your trade, Florida service area, and the kinds of public opportunities you want to review. Requests are reviewed by a person.",
+  ],
 ];
