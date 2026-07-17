@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "npm run test:preview",
+    "test:preview": "node scripts/validate-preview.mjs"
   },
   "dependencies": {
     "@splinetool/runtime": "^1.12.98",

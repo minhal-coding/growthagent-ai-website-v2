@@ -11,7 +11,7 @@ The original repository, its branches, its GitHub Pages workflow, and the curren
 - Next.js 15 App Router with static export
 - React 19 and TypeScript
 - Tailwind CSS 4
-- CSS motion and a lazy-loaded Spline robot experience
+- CSS motion and an explicit-consent optional Spline illustration
 - npm (`package-lock.json`)
 
 ## Local development
@@ -29,9 +29,10 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run lint
 npm run typecheck
 npm run build
+npm test
 ```
 
-The repository currently has no automated unit test suite. Rendered desktop and mobile validation is performed with Playwright as part of the V2 review.
+`npm test` checks the preview-only claims, fictional-data labeling, disabled intake, Spline consent and reduced-motion guards, navigation semantics, and the exported metadata/robots/sitemap behavior. Rendered desktop and mobile validation is also performed with Playwright as part of the V2 review.
 
 ## V2 routes
 
@@ -52,4 +53,19 @@ The copied baseline routes and the full rebuild record are documented in [`docs/
 
 The inherited GitHub Pages deployment authority is intentionally not included. GitHub Actions validates lint, types, and the production build but does not deploy.
 
-If an isolated preview is approved later, configure it against this repository only, use a distinct preview URL, and do not reuse production DNS or production deployment credentials.
+The exported site is non-indexable by default. Without configuration, every page emits `noindex, nofollow, noarchive`, no canonical URL or structured data is published, `robots.txt` disallows all crawling, and the sitemap is empty.
+
+Indexing can be enabled only after an owner has approved the final isolated URL and public-launch state. Both variables are required:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://owner-approved-isolated-url.example
+NEXT_PUBLIC_ENABLE_INDEXING=true
+```
+
+Do not add an actual URL to the repository. A preview host should inject the approved value at build time. If an isolated preview is approved later, configure it against this repository only, use a distinct URL, and do not reuse production DNS or production deployment credentials.
+
+## Preview-only interactions
+
+- The early-access interface is a disabled visual preview. It has no form element or external endpoint and nothing entered is sent, stored, or reviewed.
+- The product page does not request the external Spline scene by default. A visitor must choose **Load optional 3D scene** after seeing the third-party disclosure. Reduced-motion visitors receive the complete local fallback without a Spline request.
+- Enabling collection or retaining the external scene still requires the owner approvals listed in the rebuild report.

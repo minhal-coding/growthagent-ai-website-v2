@@ -1,13 +1,9 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://minhal-coding.github.io/growthagent-ai-website-v2";
+import { configuredSiteUrl, indexingEnabled } from "@/lib/site-metadata";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
-  };
+  if (!indexingEnabled || !configuredSiteUrl) return { rules: { userAgent: "*", disallow: "/" } };
+  return { rules: { userAgent: "*", allow: "/" }, sitemap: `${configuredSiteUrl}/sitemap.xml`, host: configuredSiteUrl };
 }

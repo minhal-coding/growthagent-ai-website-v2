@@ -22,67 +22,72 @@ export const workflowSteps = [
   {
     number: "01",
     title: "Discover",
-    text: "Review configured public sources for construction-relevant records.",
-    detail: "Permits, planning records, and procurement notices",
+    text: "Evaluate candidate public-source workflows for construction-relevant records.",
+    detail: "Permit, planning, and procurement source types under evaluation",
     icon: Search,
   },
   {
     number: "02",
     title: "Verify",
-    text: "Keep the public source link and evidence beside the opportunity.",
-    detail: "Source URL, record context, and location",
+    text: "Design each opportunity view to preserve source context beside the record.",
+    detail: "Example source slot, record context, and location",
     icon: ShieldCheck,
   },
   {
     number: "03",
     title: "Rank",
-    text: "Organize records around trade fit, service area, and review priorities.",
+    text: "Explore how records could be organized around trade fit, service area, and review priorities.",
     detail: "Explainable fit signals, not a black box",
     icon: SlidersHorizontal,
   },
   {
     number: "04",
     title: "Human review",
-    text: "A person confirms the details, adds context, and decides the next step.",
-    detail: "No autonomous outreach or fabricated contacts",
+    text: "Design for a person to confirm details, add context, and decide the next step.",
+    detail: "No autonomous outreach or fabricated contacts are represented",
     icon: UserCheck,
   },
 ];
 
 export const sourceTypes = [
-  { title: "Permit records", text: "Public permit information where access and reuse are appropriate.", icon: FileSearch },
-  { title: "Planning information", text: "Public agendas, applications, and planning records selected for the launch.", icon: MapPinned },
-  { title: "Procurement notices", text: "Publicly posted solicitations and supporting procurement information.", icon: ExternalLink },
+  { title: "Permit-record categories", text: "Candidate public permit information whose access and reuse would need validation.", icon: FileSearch },
+  { title: "Planning-information categories", text: "Candidate public agendas, applications, and planning records under evaluation.", icon: MapPinned },
+  { title: "Procurement-notice categories", text: "Candidate publicly posted solicitations and supporting procurement information.", icon: ExternalLink },
 ];
 
 export const trustPrinciples = [
   {
-    title: "Source-backed",
-    text: "Opportunity context stays connected to a public record link for operator review.",
-    meta: "Evidence captured",
+    title: "Designed to preserve source evidence",
+    text: "The planned experience keeps an evidence slot beside each record for operator review.",
+    meta: "Evidence required",
     icon: ShieldCheck,
   },
   {
     title: "No fabricated contacts",
-    text: "The launch does not invent people, roles, email addresses, or contact details.",
+    text: "No contacts are shown in this preview. Any future contact detail would require source evidence and review.",
     meta: "Contact evidence required",
     icon: ClipboardCheck,
   },
   {
-    title: "Human-reviewed workflows",
-    text: "A person decides whether a record is relevant and what, if anything, happens next.",
-    meta: "Operator decision",
+    title: "Designed for human review",
+    text: "The planned workflow keeps a person responsible for relevance and any next step.",
+    meta: "Human decision required",
     icon: UserCheck,
   },
   {
     title: "Scope stays explicit",
-    text: "Florida construction is the launch focus. Source and county coverage will expand only when verified.",
-    meta: "Launching soon",
+    text: "Florida construction is the planned first market. Exact source and county coverage still requires verification.",
+    meta: "Validation stage",
     icon: Scale,
   },
 ];
 
-export const launchAreas = ["Orange County", "Seminole County", "Osceola County", "Central Florida"];
+export const launchAreas = [
+  "Illustrative Central Florida focus",
+  "Example county-level validation",
+  "Example municipal validation",
+  "Example regional service-area conversation",
+];
 
 export const constructionTrades = [
   "General contracting",
@@ -96,26 +101,26 @@ export const constructionTrades = [
 export const faqs = [
   [
     "Is GrowthAgent AI live nationwide?",
-    "No. GrowthAgent AI is launching in Florida for construction teams through an early-access and pilot process.",
+    "No. Florida construction is the planned first market, and availability, coverage, and launch timing remain unconfirmed.",
   ],
   [
-    "Which public sources are included?",
-    "The launch is evaluating selected permit, planning, and procurement sources. A source is described as active only after its workflow has been verified.",
+    "Which public source types are under evaluation?",
+    "The planned launch is evaluating permit, planning, and procurement source categories. No source is presented as active until its access and workflow are independently verified and owner-approved.",
   ],
   [
-    "Does the platform create contact information?",
-    "No. GrowthAgent AI does not fabricate names, roles, email addresses, or phone numbers. Contact details require source evidence and review.",
+    "Would the planned product create contact information?",
+    "No fabricated names, roles, email addresses, or phone numbers are shown or promised. Any future contact detail would require source evidence and review.",
   ],
   [
     "Does it contact opportunities automatically?",
-    "No autonomous outreach is promised for the Florida launch. The current website describes discovery, evidence, ranking, and human review.",
+    "No autonomous outreach is promised. The current website previews a planned workflow for evaluating records, evidence, organization, and human review.",
   ],
   [
     "Is the demonstration record real?",
-    "No. Records shown on this website are clearly labeled Demonstration Data and illustrate the review experience without representing production activity.",
+    "No. Every example is labeled as fictional demonstration data and does not represent a live record, verified source, customer, contact, or production activity.",
   ],
   [
-    "How do I request early access?",
-    "Share your trade, Florida service area, and the kinds of public opportunities you want to review. Requests are reviewed by a person.",
+    "What is the early-access preview?",
+    "The current page is a nonfunctional preview of the topics a future intake could cover. Nothing entered there is sent, stored, or reviewed.",
   ],
 ];

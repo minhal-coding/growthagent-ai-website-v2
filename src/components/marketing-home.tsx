@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, MapPin } from "lucide-react";
+import { ArrowRight, Circle } from "lucide-react";
 
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
 import { PageShell, SectionHeading } from "@/components/site-chrome";
@@ -17,18 +17,18 @@ export function MarketingHome() {
                 Find the <span className="text-[#42d6c7]">Florida construction</span> opportunities worth reviewing.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">
-                GrowthAgent AI helps Florida contractors discover, verify, rank, and review source-backed opportunities from public permits, planning records, and procurement notices.
+                GrowthAgent AI is being designed to help Florida contractors evaluate a human-review workflow for public construction opportunity records. Permit, planning, and procurement source categories remain under evaluation.
               </p>
-              <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-500">
-                Early access. Florida only. Construction only. Human review stays in control.
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-400">
+                Product-direction preview. Florida construction is the planned first market. Exact source and geographic coverage are unverified.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/early-access" className="ga-button justify-center py-3 sm:justify-start">
-                  Join Florida Early Access
+                <Link href="/florida-launch" className="ga-button justify-center py-3 sm:justify-start">
+                  Explore Florida Launch
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
-                <Link href="/how-it-works" className="ga-button-secondary justify-center py-3 sm:justify-start">
-                  See How It Works
+                <Link href="/early-access" className="ga-button-secondary justify-center py-3 sm:justify-start">
+                  View Early Access Preview
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -55,7 +55,7 @@ export function MarketingHome() {
                   </div>
                   <h3 className="mt-8 text-2xl font-extrabold tracking-[-0.03em] text-white">{step.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-400">{step.text}</p>
-                  <p className="mt-5 text-xs font-semibold leading-5 text-slate-500">{step.detail}</p>
+                  <p className="mt-5 text-sm font-semibold leading-6 text-slate-400">{step.detail}</p>
                   {index < workflowSteps.length - 1 ? <ArrowRight className="absolute -right-2.5 top-10 z-10 hidden size-5 bg-[#05070d] text-[#d4af37] lg:block" aria-hidden="true" /> : null}
                 </li>
               ))}
@@ -76,8 +76,17 @@ export function MarketingHome() {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="mt-12">
+            <div className="mt-12 hidden lg:block">
               <ConstructionOpportunityPreview />
+            </div>
+            <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-6 lg:hidden">
+              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#42d6c7]">Product summary</p>
+              <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                <li>• Fictional examples show the intended review layout.</li>
+                <li>• Source, service-area, and status labels are illustrative only.</li>
+                <li>• A human remains responsible for every decision and next step.</li>
+              </ul>
+              <Link href="/product" className="ga-text-link mt-6">View the full product preview<ArrowRight className="size-4" aria-hidden="true" /></Link>
             </div>
           </div>
         </section>
@@ -87,11 +96,11 @@ export function MarketingHome() {
             <div>
               <SectionHeading
                 label="Florida launch"
-                title="Starting in Florida. Built around evidence."
-                text="The initial launch is focused on Florida construction teams and selected public records. Counties shown are launch examples, not a claim of statewide coverage."
+                title="Planning for Florida construction. Built around evidence."
+                text="Florida construction is the planned first market. The diagram and validation topics are illustrative and do not claim active sources or approved county coverage."
               />
               <div className="relative mt-10 min-h-[27rem] overflow-hidden rounded-2xl border border-white/10 bg-[#070b12] p-6">
-                <svg viewBox="0 0 420 330" role="img" aria-label="Abstract Florida launch coverage diagram" className="absolute inset-0 h-full w-full text-[#42d6c7] opacity-75">
+                <svg viewBox="0 0 420 330" role="img" aria-label="Florida validation example diagram" className="absolute inset-0 h-full w-full text-[#42d6c7] opacity-75">
                   <path d="M72 55 259 60l9 34 22 23 2 42 34 32 4 30 29 28-5 22-20-8-25-28-21-11-14-29-34-22-15-42-28-20-22-32-23-15-18-31-54-19-23-27Z" fill="none" stroke="currentColor" strokeWidth="2" />
                   <path d="M55 44h245M48 91h250M69 138h236M100 185h221M127 232h215" stroke="currentColor" strokeOpacity=".12" />
                   <circle cx="248" cy="164" r="8" fill="#d4af37" />
@@ -103,7 +112,7 @@ export function MarketingHome() {
                 <div className="relative ml-auto flex max-w-xs flex-col gap-3 pt-44 sm:pt-8">
                   {launchAreas.map((area) => (
                     <div key={area} className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#05070d]/90 px-4 py-3 text-sm font-semibold text-slate-200 backdrop-blur-sm">
-                      <MapPin className="size-4 text-[#d4af37]" aria-hidden="true" />
+                      <Circle className="size-4 text-[#d4af37]" aria-hidden="true" />
                       {area}
                     </div>
                   ))}
@@ -123,7 +132,7 @@ export function MarketingHome() {
                       <h3 className="font-bold text-white">{item.title}</h3>
                       <p className="mt-1 text-sm leading-6 text-slate-400">{item.text}</p>
                     </div>
-                    <span className="text-xs font-semibold text-slate-500 sm:text-right">{item.meta}</span>
+                    <span className="text-sm font-semibold text-slate-400 sm:text-right">{item.meta}</span>
                   </div>
                 ))}
               </div>
@@ -138,16 +147,16 @@ export function MarketingHome() {
         <section className="border-t border-white/10 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <div className="mx-auto grid max-w-[90rem] gap-10 rounded-2xl border border-[#d4af37]/35 bg-[linear-gradient(135deg,rgba(212,175,55,0.08),rgba(66,214,199,0.035))] p-7 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#42d6c7]">Early access</p>
-              <h2 className="mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1.02] tracking-[-0.05em] text-white sm:text-6xl">Help shape the Florida launch.</h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Tell us your trade, service area, and the kinds of public opportunities your team wants to review.</p>
-              <p className="mt-4 flex items-center gap-2 text-sm text-slate-500">
-                <Check className="size-4 text-[#42d6c7]" aria-hidden="true" />
-                Early-access requests are reviewed by a person.
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#42d6c7]">Early access preview</p>
+              <h2 className="mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1.02] tracking-[-0.05em] text-white sm:text-6xl">Preview a future Florida intake.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">See the topics a future, owner-approved early-access intake could cover.</p>
+              <p className="mt-4 flex items-center gap-2 text-sm leading-6 text-slate-400">
+                <Circle className="size-4 text-[#42d6c7]" aria-hidden="true" />
+                The preview does not send, store, or submit information.
               </p>
             </div>
-            <Link href="/early-access" className="ga-button justify-center py-3.5">
-              Request Early Access
+            <Link href="/early-access" className="ga-button-secondary justify-center py-3.5">
+              View Early Access Preview
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>

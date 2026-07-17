@@ -1,21 +1,23 @@
-"use client";
-
-import { useState } from "react";
-import { CheckCircle2, LockKeyhole } from "lucide-react";
+import { Eye, LockKeyhole } from "lucide-react";
 
 export function EarlyAccessForm() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
-    <form
+    <section
+      aria-labelledby="early-access-preview-title"
       className="rounded-2xl border border-white/15 bg-[#090d14] p-5 shadow-[0_30px_90px_rgba(0,0,0,0.3)] sm:p-7"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSubmitted(true);
-      }}
-      aria-describedby="form-disclosure"
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div id="form-disclosure" role="note" className="mb-6 rounded-xl border border-[#f2c94c]/45 bg-[#d4af37]/[0.08] p-4 text-sm font-semibold leading-6 text-slate-100">
+        <span className="flex items-start gap-3">
+          <LockKeyhole className="mt-1 size-4 shrink-0 text-[#f2c94c]" aria-hidden="true" />
+          <span><strong id="early-access-preview-title" className="text-white">Preview only</strong> — nothing entered here is sent, stored, or reviewed. Do not enter personal information.</span>
+        </span>
+      </div>
+      <fieldset disabled aria-describedby="form-disclosure">
+        <legend className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-[#42d6c7]">
+          <Eye className="size-4" aria-hidden="true" />
+          Early Access Preview
+        </legend>
+        <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" autoComplete="name" required />
         <Field label="Work email" name="email" type="email" autoComplete="email" required />
         <Field label="Company" name="company" autoComplete="organization" required />
@@ -31,29 +33,21 @@ export function EarlyAccessForm() {
             <option>Other specialty trade</option>
           </select>
         </label>
-      </div>
-      <label className="mt-5 grid gap-2 text-sm font-semibold text-slate-200">
-        Florida service area
-        <input name="serviceArea" required className="ga-field" placeholder="For example: Orange County or Central Florida" />
-      </label>
-      <label className="mt-5 grid gap-2 text-sm font-semibold text-slate-200">
-        What should we watch for?
-        <textarea name="watchFor" rows={5} className="ga-field resize-y" placeholder="Project types, public agencies, delivery methods, locations, or other review priorities" />
-      </label>
-      <button type="submit" className="ga-button mt-6 w-full justify-center py-3.5">
-        Request Early Access
-      </button>
-      <p id="form-disclosure" className="mt-4 flex gap-2 text-xs leading-5 text-slate-500">
-        <LockKeyhole className="mt-0.5 size-3.5 shrink-0 text-[#42d6c7]" aria-hidden="true" />
-        Early-access requests are reviewed by a person. This V2 preview does not transmit or store form data until an owner-approved submission service is connected.
-      </p>
-      {submitted ? (
-        <div role="status" className="mt-4 flex gap-2 rounded-xl border border-[#42d6c7]/30 bg-[#42d6c7]/[0.07] p-4 text-sm leading-6 text-slate-200">
-          <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#42d6c7]" aria-hidden="true" />
-          Preview confirmed: no information was sent. Connect an approved form endpoint before public launch.
         </div>
-      ) : null}
-    </form>
+        <label className="mt-5 grid gap-2 text-sm font-semibold text-slate-200">
+          Florida service area
+          <input name="serviceArea" className="ga-field" placeholder="Example only — future intake topic" />
+        </label>
+        <label className="mt-5 grid gap-2 text-sm font-semibold text-slate-200">
+          What should a future intake ask?
+          <textarea name="watchFor" rows={5} className="ga-field resize-y" placeholder="Example only — project types, agencies, locations, or review priorities" />
+        </label>
+        <button type="button" disabled className="ga-button mt-6 w-full cursor-not-allowed justify-center py-3.5 opacity-70">
+          Preview Only
+        </button>
+      </fieldset>
+      <p className="mt-4 text-sm leading-6 text-slate-400">No external form endpoint is connected. Enabling collection requires owner-approved privacy, retention, contact, and processing terms.</p>
+    </section>
   );
 }
 
@@ -61,7 +55,7 @@ function Field({ label, name, type = "text", autoComplete, required = false }: {
   return (
     <label className="grid gap-2 text-sm font-semibold text-slate-200">
       {label}
-      <input name={name} type={type} autoComplete={autoComplete} required={required} className="ga-field" />
+      <input name={name} type={type} autoComplete={autoComplete} required={required} className="ga-field" placeholder="Example only" />
     </label>
   );
 }

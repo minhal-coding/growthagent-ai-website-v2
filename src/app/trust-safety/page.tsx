@@ -3,12 +3,9 @@ import { Plus } from "lucide-react";
 
 import { PageIntro, PageShell, SectionHeading } from "@/components/site-chrome";
 import { faqs, trustPrinciples } from "@/components/site-data";
+import { createPageMetadata } from "@/lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Trust & Safety",
-  description: "How GrowthAgent AI approaches source evidence, human review, explicit scope, and demonstration data for its Florida construction launch.",
-  alternates: { canonical: "/trust-safety" },
-};
+export const metadata: Metadata = createPageMetadata({ title: "Trust & Safety", description: "How the GrowthAgent AI preview distinguishes planned controls, fictional data, unverified coverage, and human responsibility.", path: "/trust-safety" });
 
 export default function TrustSafetyPage() {
   return (
@@ -17,7 +14,7 @@ export default function TrustSafetyPage() {
         <PageIntro
           label="Trust & safety"
           title="Claims should be as reviewable as the opportunities."
-          text="The V2 website describes only the Florida construction workflow being validated. It does not promise unverified controls, contacts, source coverage, or autonomous outreach."
+          text="The V2 website describes a planned Florida construction workflow under validation. It does not claim completed controls, real contacts, active source coverage, or autonomous outreach."
         />
         <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <div className="mx-auto max-w-[90rem] border-y border-white/10">
@@ -28,7 +25,7 @@ export default function TrustSafetyPage() {
                 </span>
                 <h2 className="text-xl font-extrabold text-white">{item.title}</h2>
                 <p className="text-sm leading-6 text-slate-400">{item.text}</p>
-                <span className="text-xs font-semibold text-[#d4af37] md:text-right">{item.meta}</span>
+                <span className="text-sm font-semibold text-[#d4af37] md:text-right">{item.meta}</span>
               </article>
             ))}
           </div>

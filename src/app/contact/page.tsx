@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 
 import { EarlyAccessPage } from "@/components/early-access-page";
+import { createPageMetadata } from "@/lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact GrowthAgent AI about Florida construction early access and pilot review.",
-  alternates: { canonical: "/early-access" },
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = createPageMetadata({ title: "Contact Preview", description: "A nonfunctional preview with no contact endpoint or data collection.", path: "/contact", forceNoIndex: true });
 
 export default function ContactPage() {
   return <EarlyAccessPage />;

@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Circle } from "lucide-react";
 
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
 import { PageIntro, PageShell, SectionHeading } from "@/components/site-chrome";
 import { sourceTypes } from "@/components/site-data";
 import { GrowthAgentRobotOrbit } from "@/components/ui/growth-agent-robot-orbit";
+import { createPageMetadata } from "@/lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Product",
-  description: "See how GrowthAgent AI is designed to help Florida construction teams review source-backed public opportunities.",
-  alternates: { canonical: "/product" },
-};
+export const metadata: Metadata = createPageMetadata({ title: "Product Preview", description: "See the planned GrowthAgent AI workflow for evaluating Florida construction opportunity review.", path: "/product" });
 
 export default function ProductPage() {
   return (
@@ -20,7 +17,7 @@ export default function ProductPage() {
         <PageIntro
           label="Product"
           title="Construction opportunity review, with the source still attached."
-          text="GrowthAgent AI is being built to help Florida contractors organize public construction records around evidence, trade fit, service area, and human judgment."
+          text="GrowthAgent AI is being designed to explore how Florida contractors could organize public construction records around evidence, trade fit, service area, and human judgment."
         />
         <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <div className="mx-auto max-w-[90rem]">
@@ -29,7 +26,7 @@ export default function ProductPage() {
         </section>
         <section className="border-y border-white/10 bg-[#070a10] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <div className="mx-auto max-w-[90rem]">
-            <SectionHeading title="Public-source inputs, selected for the launch." text="A source is described as active only after its access, evidence, and review workflow have been validated." />
+            <SectionHeading title="Public-source categories under evaluation." text="No source is described as active until its access, evidence, and review workflow have been independently validated and owner-approved." />
             <div className="mt-12 grid border-y border-white/10 md:grid-cols-3">
               {sourceTypes.map((item) => (
                 <article key={item.title} className="border-b border-white/10 py-7 md:border-b-0 md:border-r md:px-7 md:last:border-r-0">
@@ -49,11 +46,11 @@ export default function ProductPage() {
         <section className="border-t border-white/10 px-5 py-16 sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-[90rem] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="flex items-center gap-2 text-sm text-slate-300">
-              <CheckCircle2 className="size-4 text-[#42d6c7]" aria-hidden="true" />
-              Early access is reviewed by a person and does not guarantee coverage.
+              <Circle className="size-4 text-[#42d6c7]" aria-hidden="true" />
+              This preview does not guarantee availability, source coverage, or a launch date.
             </p>
-            <Link href="/early-access" className="ga-button justify-center">
-              Request Early Access
+            <Link href="/florida-launch" className="ga-button justify-center">
+              Explore Florida Launch
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>

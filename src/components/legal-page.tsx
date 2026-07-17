@@ -3,10 +3,11 @@ import { PageIntro, PageShell } from "@/components/site-chrome";
 type LegalPageProps = { kind: "privacy" | "terms" };
 
 const privacySections = [
-  ["Early-access requests", "The V2 preview does not transmit or store form submissions. An owner-approved submission service and final privacy notice are required before public collection begins."],
+  ["Early-access preview", "The disabled V2 intake preview does not transmit, store, or route information for review. No contact endpoint is connected. An owner-approved processor, contact channel, retention schedule, and final privacy notice are required before public collection begins."],
   ["Public-source information", "The planned product may organize information from selected public permit, planning, and procurement sources. Source access, reuse terms, and data handling must be validated for each workflow."],
   ["Demonstration data", "Records shown on this website are fictional demonstration data and do not represent customer, contact, or production records."],
   ["AI-assisted review", "The planned workflow may use AI to summarize or organize public-source context. A person remains responsible for reviewing the source and deciding what happens next."],
+  ["Optional Spline scene", "The product page does not contact Spline by default. Only choosing “Load optional 3D scene” requests the externally hosted scene from that third-party service. Reduced-motion visitors receive the local fallback instead. Owner approval of the dependency, licensing, and final third-party disclosure is still required."],
   ["Changes before launch", "This notice will be updated before any public early-access form or production service collects personal information."],
 ];
 
@@ -32,7 +33,7 @@ export function LegalPage({ kind }: LegalPageProps) {
         />
         <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <div className="mx-auto max-w-4xl">
-            <p className="text-sm font-semibold text-slate-500">Last updated: July 17, 2026</p>
+            <p className="text-sm font-semibold text-slate-400">Last updated: July 17, 2026</p>
             <div className="mt-8 border-y border-white/10">
               {sections.map(([title, body]) => (
                 <section key={title} className="border-b border-white/10 py-7 last:border-b-0">
