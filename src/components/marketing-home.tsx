@@ -4,8 +4,13 @@ import { ArrowRight, Circle, FileCheck2, HardHat, MapPinned, UserCheck } from "l
 
 import { CinematicWorkflow } from "@/components/cinematic-workflow";
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
+import { DivisionExplorer, DivisionSystemLabel } from "@/components/division-explorer";
 import { FloridaTrustSection } from "@/components/florida-trust-section";
+import { LeadListComparison } from "@/components/lead-list-comparison";
+import { OpportunityAnatomy } from "@/components/opportunity-anatomy";
+import { SourceCategoriesSection, SystemOrganizesVisual } from "@/components/product-expansion-sections";
 import { PageShell, SectionHeading } from "@/components/site-chrome";
+import { MotionReveal } from "@/components/ui/motion-reveal";
 
 export function MarketingHome() {
   return (
@@ -14,7 +19,7 @@ export function MarketingHome() {
         <section className="ga-grid-bg relative overflow-hidden border-b border-white/10 px-5 pb-0 pt-14 sm:px-8 sm:pt-20 lg:px-12 lg:pt-24">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_74%_16%,rgba(66,214,199,0.13),transparent_38%),radial-gradient(circle_at_13%_18%,rgba(228,189,69,0.1),transparent_32%)]" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-[90rem] gap-12 xl:grid-cols-[0.84fr_1.16fr] xl:items-start xl:gap-12">
-            <div className="max-w-3xl xl:pb-20">
+            <MotionReveal className="max-w-3xl xl:pb-20">
               <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/25 px-3 py-2 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-slate-300">
                 <HardHat className="size-3.5 text-[#e4bd45]" aria-hidden="true" />
                 Florida construction product-direction preview
@@ -23,11 +28,12 @@ export function MarketingHome() {
                 Find the <span className="text-[#42d6c7]">Florida construction</span> opportunities worth reviewing.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">
-                GrowthAgent AI is being designed to help Florida contractors evaluate public construction opportunity records with evidence, service-area context, and human judgment in one review surface.
+                GrowthAgent AI is being built to help Florida construction companies find, organize, and review public-source opportunities by construction division, geography, project fit, and source evidence.
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-400">
-                Product-direction preview. Permit, planning, procurement, source access, and geographic coverage remain under evaluation.
+                Instead of delivering an unverified list, GrowthAgent AI is designed to preserve the original public record, classify the opportunity by trade, evaluate fit against the contractor&apos;s service area and priorities, remove duplicates and exclusions, and present the result for human review.
               </p>
+              <p className="mt-3 max-w-2xl text-xs leading-5 text-slate-500">Product-direction preview. Source access, geographic coverage, and every customer-facing delivery workflow remain under evaluation.</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link href="/florida-launch" className="ga-button justify-center py-3.5 sm:justify-start">
                   Explore Florida Launch
@@ -44,14 +50,14 @@ export function MarketingHome() {
                 <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#42d6c7]" aria-hidden="true" /> Human decision required</span>
               </div>
               <Image src="/construction-blueprint.png" alt="" width={1800} height={600} className="pointer-events-none mt-7 h-auto w-full max-w-2xl opacity-50 mix-blend-screen" aria-hidden="true" priority />
-            </div>
+            </MotionReveal>
 
-            <div className="relative min-w-0 xl:pb-20 xl:pt-16">
+            <MotionReveal className="relative min-w-0 xl:pb-20 xl:pt-16" delay={0.1} y={14}>
               <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(66,214,199,0.11),transparent_67%)]" aria-hidden="true" />
               <div className="relative">
                 <ConstructionOpportunityPreview compact />
               </div>
-            </div>
+            </MotionReveal>
           </div>
 
           <div className="relative mx-auto mt-14 max-w-[96rem] overflow-hidden border-x border-t border-white/10 bg-[#080c13]/80 px-5 py-6 sm:mt-6 sm:px-8">
@@ -66,32 +72,30 @@ export function MarketingHome() {
 
         <CinematicWorkflow />
 
-        <section id="product" className="relative overflow-hidden border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(228,189,69,0.06),transparent_35%)]" aria-hidden="true" />
+        <LeadListComparison />
+
+        <section id="divisions" className="ga-content-visibility relative overflow-hidden border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(228,189,69,0.07),transparent_35%)]" aria-hidden="true" />
           <div className="relative mx-auto max-w-[90rem]">
+            <DivisionSystemLabel />
+            <div className="mt-5 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+              <SectionHeading title="Organized around 14 major construction divisions." text="The planned taxonomy helps Florida construction teams narrow candidate records by the work they pursue. Every division is planned or under validation; none is represented as active coverage." />
+              <Link href="/divisions" className="ga-text-link">View division details<ArrowRight className="size-4" aria-hidden="true" /></Link>
+            </div>
+            <div className="mt-12"><DivisionExplorer showRouteLink /></div>
+          </div>
+        </section>
+
+        <SourceCategoriesSection />
+        <SystemOrganizesVisual />
+
+        <section id="product" className="ga-content-visibility border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+          <div className="mx-auto max-w-[90rem]">
             <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
-              <SectionHeading
-                label="Product experience"
-                title="A command center designed around the evidence."
-                text="The review surface keeps fictional source context, service-area fit, trade labels, and operator judgment together without suggesting active records or automatic outreach."
-              />
-              <Link href="/product" className="ga-text-link">
-                Explore the product
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
+              <SectionHeading label="Opportunity anatomy" title="See what a review-ready opportunity could contain." text="This fictional example separates source facts, customer-fit signals, and the human-controlled decision so the product direction is understandable without implying live data." />
+              <Link href="/product" className="ga-text-link">Explore the product<ArrowRight className="size-4" aria-hidden="true" /></Link>
             </div>
-            <div className="mt-12 hidden lg:block">
-              <ConstructionOpportunityPreview />
-            </div>
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-6 lg:hidden">
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#42d6c7]">Product summary</p>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
-                <li>• Fictional examples show the intended review layout.</li>
-                <li>• Source, service-area, and status labels are illustrative only.</li>
-                <li>• A human remains responsible for every decision and next step.</li>
-              </ul>
-              <Link href="/product" className="ga-text-link mt-6">View the full product preview<ArrowRight className="size-4" aria-hidden="true" /></Link>
-            </div>
+            <div className="mt-12"><OpportunityAnatomy /></div>
           </div>
         </section>
 

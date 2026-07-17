@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { configuredSiteUrl, indexingEnabled } from "@/lib/site-metadata";
 
-const routes = ["", "/product", "/how-it-works", "/florida-launch", "/trust-safety", "/about", "/early-access", "/privacy", "/terms"];
+const routes = ["", "/product", "/how-it-works", "/divisions", "/florida-launch", "/trust-safety", "/about", "/early-access", "/privacy", "/terms"];
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {

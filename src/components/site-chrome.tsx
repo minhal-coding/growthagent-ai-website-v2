@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { cn } from "@/lib/utils";
 
 const footerGroups = [
-  { title: "Explore", links: [["Product", "/product"], ["How It Works", "/how-it-works"], ["Florida Launch", "/florida-launch"]] },
+  { title: "Explore", links: [["Product", "/product"], ["How It Works", "/how-it-works"], ["Divisions", "/divisions"], ["Florida Launch", "/florida-launch"]] },
   { title: "Company", links: [["About", "/about"], ["Early Access Preview", "/early-access"], ["Contact Preview", "/contact"]] },
   { title: "Trust", links: [["Trust & Safety", "/trust-safety"], ["Privacy", "/privacy"], ["Terms", "/terms"]] },
 ];

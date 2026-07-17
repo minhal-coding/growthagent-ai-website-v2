@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Circle, MapPin, Radio } from "lucide-react";
 
 import { launchAreas, trustPrinciples } from "@/components/site-data";
+import { MotionStagger } from "@/components/ui/motion-reveal";
 
 export function FloridaTrustSection() {
   return (
@@ -59,7 +60,7 @@ export function FloridaTrustSection() {
                 <span className="hidden text-right text-[0.65rem] font-extrabold uppercase tracking-[0.15em] text-slate-500 sm:block">Development<br />stage</span>
               </div>
 
-              <div>
+              <MotionStagger>
                 {trustPrinciples.map((item) => (
                   <article key={item.title} className="grid gap-3 border-b border-white/10 py-5 sm:grid-cols-[auto_1fr]">
                     <span className="grid size-10 place-items-center rounded-xl border border-[#42d6c7]/25 bg-[#42d6c7]/[0.04] text-[#42d6c7]">
@@ -74,7 +75,7 @@ export function FloridaTrustSection() {
                     </div>
                   </article>
                 ))}
-              </div>
+              </MotionStagger>
               <Link href="/trust-safety" className="ga-text-link mt-7">
                 Read the trust approach
                 <ArrowRight className="size-4" aria-hidden="true" />

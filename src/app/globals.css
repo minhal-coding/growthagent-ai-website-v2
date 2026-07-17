@@ -74,6 +74,8 @@ summary {
 
 .ga-button,
 .ga-button-secondary {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   min-height: 2.75rem;
   align-items: center;
@@ -84,6 +86,25 @@ summary {
   font-weight: 800;
   line-height: 1.25rem;
   transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.ga-button::after,
+.ga-button-secondary::after {
+  position: absolute;
+  inset: -40% auto -40% -45%;
+  width: 30%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ga-button:hover::after,
+.ga-button:focus-visible::after,
+.ga-button-secondary:hover::after,
+.ga-button-secondary:focus-visible::after {
+  animation: ga-shine 650ms ease-out 1;
 }
 
 .ga-button {
@@ -180,6 +201,38 @@ summary {
     inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
+.ga-glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  position: relative;
+  isolation: isolate;
+}
+
+.ga-glow-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--glow-x) var(--glow-y), var(--glow-color), transparent 68%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.ga-glow-card-teal { --glow-color: rgba(66, 214, 199, 0.34); }
+.ga-glow-card-gold { --glow-color: rgba(228, 189, 69, 0.34); }
+
+@media (hover: hover) and (pointer: fine) {
+  .ga-glow-card:hover::before { opacity: 1; }
+}
+
+@keyframes ga-shine {
+  0% { left: -45%; opacity: 0; }
+  18% { opacity: 0.75; }
+  100% { left: 125%; opacity: 0; }
+}
+
 @media (max-width: 640px) {
   .ga-grid-bg {
     background-size: 24px 24px;
@@ -198,5 +251,16 @@ summary {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .ga-button::after,
+  .ga-button-secondary::after,
+  .ga-glow-card::before {
+    display: none !important;
+  }
+
+  .ga-motion-safe {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
