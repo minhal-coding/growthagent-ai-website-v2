@@ -20,10 +20,10 @@ export function GrowthAgentRobotOrbit() {
         <span className="rounded-full border border-[#d4af37]/30 px-3 py-1.5 text-xs font-semibold text-[#f2c94c]">Human decision required</span>
       </div>
       <div className="grid lg:grid-cols-[1fr_1.05fr]">
-        <div className="relative min-h-[30rem] overflow-hidden border-b border-white/10 lg:border-b-0 lg:border-r">
+        <div className="relative overflow-hidden border-b border-white/10 lg:border-b-0 lg:border-r">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(66,214,199,0.08),transparent_48%)]" />
-          <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="relative h-[30rem] w-full" />
-          <p className="absolute bottom-4 left-4 right-4 rounded-xl border border-white/10 bg-black/80 p-3 text-sm leading-6 text-slate-300 backdrop-blur-sm">
+          <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="relative h-[31rem] w-full" />
+          <p className="relative border-t border-white/10 bg-black/80 p-4 text-sm leading-6 text-slate-300">
             The robot is an optional visual guide. It does not imply autonomous outreach, live production activity, or independent decision-making.
           </p>
         </div>

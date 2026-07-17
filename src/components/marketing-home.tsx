@@ -1,75 +1,79 @@
 import Link from "next/link";
-import { ArrowRight, Circle } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Circle, FileCheck2, HardHat, MapPinned, UserCheck } from "lucide-react";
 
+import { CinematicWorkflow } from "@/components/cinematic-workflow";
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
+import { FloridaTrustSection } from "@/components/florida-trust-section";
 import { PageShell, SectionHeading } from "@/components/site-chrome";
-import { launchAreas, trustPrinciples, workflowSteps } from "@/components/site-data";
 
 export function MarketingHome() {
   return (
     <PageShell>
       <main id="main-content">
-        <section className="ga-grid-bg relative overflow-hidden border-b border-white/10 px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_72%_10%,rgba(66,214,199,0.09),transparent_38%),radial-gradient(circle_at_18%_25%,rgba(212,175,55,0.08),transparent_32%)]" />
-          <div className="relative mx-auto grid max-w-[90rem] items-center gap-12 xl:grid-cols-[0.82fr_1.18fr] xl:gap-16">
-            <div className="max-w-3xl">
-              <h1 className="text-balance text-5xl font-extrabold leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+        <section className="ga-grid-bg relative overflow-hidden border-b border-white/10 px-5 pb-0 pt-14 sm:px-8 sm:pt-20 lg:px-12 lg:pt-24">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_74%_16%,rgba(66,214,199,0.13),transparent_38%),radial-gradient(circle_at_13%_18%,rgba(228,189,69,0.1),transparent_32%)]" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-[90rem] gap-12 xl:grid-cols-[0.84fr_1.16fr] xl:items-start xl:gap-12">
+            <div className="max-w-3xl xl:pb-20">
+              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/25 px-3 py-2 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-slate-300">
+                <HardHat className="size-3.5 text-[#e4bd45]" aria-hidden="true" />
+                Florida construction product-direction preview
+              </div>
+              <h1 className="max-w-2xl text-balance text-[3.35rem] font-extrabold leading-[0.97] tracking-[-0.055em] text-white sm:text-6xl lg:text-[4.45rem] xl:text-[4.65rem]">
                 Find the <span className="text-[#42d6c7]">Florida construction</span> opportunities worth reviewing.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">
-                GrowthAgent AI is being designed to help Florida contractors evaluate a human-review workflow for public construction opportunity records. Permit, planning, and procurement source categories remain under evaluation.
+                GrowthAgent AI is being designed to help Florida contractors evaluate public construction opportunity records with evidence, service-area context, and human judgment in one review surface.
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-400">
-                Product-direction preview. Florida construction is the planned first market. Exact source and geographic coverage are unverified.
+                Product-direction preview. Permit, planning, procurement, source access, and geographic coverage remain under evaluation.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/florida-launch" className="ga-button justify-center py-3 sm:justify-start">
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link href="/florida-launch" className="ga-button justify-center py-3.5 sm:justify-start">
                   Explore Florida Launch
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
-                <Link href="/early-access" className="ga-button-secondary justify-center py-3 sm:justify-start">
+                <Link href="/early-access" className="ga-button-secondary justify-center py-3.5 sm:justify-start">
                   View Early Access Preview
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </div>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs font-semibold text-slate-400">
+                <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#42d6c7]" aria-hidden="true" /> Evidence required</span>
+                <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#e4bd45]" aria-hidden="true" /> Fictional demonstration data</span>
+                <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#42d6c7]" aria-hidden="true" /> Human decision required</span>
+              </div>
+              <Image src="/construction-blueprint.png" alt="" width={1800} height={600} className="pointer-events-none mt-7 h-auto w-full max-w-2xl opacity-50 mix-blend-screen" aria-hidden="true" priority />
             </div>
-            <ConstructionOpportunityPreview compact />
+
+            <div className="relative min-w-0 xl:pb-20 xl:pt-16">
+              <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(66,214,199,0.11),transparent_67%)]" aria-hidden="true" />
+              <div className="relative">
+                <ConstructionOpportunityPreview compact />
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mx-auto mt-14 max-w-[96rem] overflow-hidden border-x border-t border-white/10 bg-[#080c13]/80 px-5 py-6 sm:mt-6 sm:px-8">
+            <div className="pointer-events-none absolute inset-0 ga-blueprint opacity-70" aria-hidden="true" />
+            <div className="relative grid gap-4 text-xs font-bold uppercase tracking-[0.13em] text-slate-500 sm:grid-cols-3">
+              <p className="flex items-center gap-2"><FileCheck2 className="size-4 text-[#42d6c7]" aria-hidden="true" /> Source context beside the record</p>
+              <p className="flex items-center gap-2"><MapPinned className="size-4 text-[#e4bd45]" aria-hidden="true" /> Explicit service-area review</p>
+              <p className="flex items-center gap-2"><UserCheck className="size-4 text-[#42d6c7]" aria-hidden="true" /> A person controls the next step</p>
+            </div>
           </div>
         </section>
 
-        <section id="how-it-works" className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="mx-auto max-w-[90rem]">
-            <SectionHeading
-              label="Source to review"
-              title="From public record to review-ready opportunity."
-              text="A focused workflow for finding evidence, checking fit, and keeping a person in control."
-            />
-            <ol className="mt-14 grid border-y border-white/10 lg:grid-cols-4">
-              {workflowSteps.map((step, index) => (
-                <li key={step.title} className="relative border-b border-white/10 px-1 py-8 last:border-b-0 lg:border-b-0 lg:border-r lg:px-7 lg:last:border-r-0">
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm font-bold text-[#d4af37]">{step.number}</span>
-                    <span className="grid size-10 place-items-center rounded-xl border border-white/12 bg-white/[0.03] text-[#42d6c7]">
-                      <step.icon className="size-5" aria-hidden="true" />
-                    </span>
-                  </div>
-                  <h3 className="mt-8 text-2xl font-extrabold tracking-[-0.03em] text-white">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{step.text}</p>
-                  <p className="mt-5 text-sm font-semibold leading-6 text-slate-400">{step.detail}</p>
-                  {index < workflowSteps.length - 1 ? <ArrowRight className="absolute -right-2.5 top-10 z-10 hidden size-5 bg-[#05070d] text-[#d4af37] lg:block" aria-hidden="true" /> : null}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <CinematicWorkflow />
 
-        <section id="product" className="border-y border-white/10 bg-[#070a10] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="mx-auto max-w-[90rem]">
+        <section id="product" className="relative overflow-hidden border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(228,189,69,0.06),transparent_35%)]" aria-hidden="true" />
+          <div className="relative mx-auto max-w-[90rem]">
             <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
               <SectionHeading
                 label="Product experience"
-                title="Evidence beside the decision."
-                text="The review surface is designed to keep source context, service-area fit, and operator judgment in the same place."
+                title="A command center designed around the evidence."
+                text="The review surface keeps fictional source context, service-area fit, trade labels, and operator judgment together without suggesting active records or automatic outreach."
               />
               <Link href="/product" className="ga-text-link">
                 Explore the product
@@ -91,74 +95,40 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="mx-auto grid max-w-[90rem] gap-16 xl:grid-cols-[0.92fr_1.08fr] xl:items-center">
-            <div>
-              <SectionHeading
-                label="Florida launch"
-                title="Planning for Florida construction. Built around evidence."
-                text="Florida construction is the planned first market. The diagram and validation topics are illustrative and do not claim active sources or approved county coverage."
-              />
-              <div className="relative mt-10 min-h-[27rem] overflow-hidden rounded-2xl border border-white/10 bg-[#070b12] p-6">
-                <svg viewBox="0 0 420 330" role="img" aria-label="Florida validation example diagram" className="absolute inset-0 h-full w-full text-[#42d6c7] opacity-75">
-                  <path d="M72 55 259 60l9 34 22 23 2 42 34 32 4 30 29 28-5 22-20-8-25-28-21-11-14-29-34-22-15-42-28-20-22-32-23-15-18-31-54-19-23-27Z" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <path d="M55 44h245M48 91h250M69 138h236M100 185h221M127 232h215" stroke="currentColor" strokeOpacity=".12" />
-                  <circle cx="248" cy="164" r="8" fill="#d4af37" />
-                  <circle cx="260" cy="143" r="5" fill="#42d6c7" />
-                  <circle cx="266" cy="187" r="5" fill="#42d6c7" />
-                  <circle cx="248" cy="164" r="54" fill="none" stroke="currentColor" strokeOpacity=".25" />
-                  <circle cx="248" cy="164" r="91" fill="none" stroke="currentColor" strokeOpacity=".12" />
-                </svg>
-                <div className="relative ml-auto flex max-w-xs flex-col gap-3 pt-44 sm:pt-8">
-                  {launchAreas.map((area) => (
-                    <div key={area} className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#05070d]/90 px-4 py-3 text-sm font-semibold text-slate-200 backdrop-blur-sm">
-                      <Circle className="size-4 text-[#d4af37]" aria-hidden="true" />
-                      {area}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+        <FloridaTrustSection />
 
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#d4af37]">Trust & safety ledger</p>
-              <div className="mt-6 border-y border-white/10">
-                {trustPrinciples.map((item) => (
-                  <div key={item.title} className="grid gap-4 border-b border-white/10 py-6 last:border-b-0 sm:grid-cols-[auto_1fr_auto] sm:items-center">
-                    <span className="grid size-11 place-items-center rounded-xl border border-white/10 text-[#42d6c7]">
-                      <item.icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h3 className="font-bold text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-slate-400">{item.text}</p>
-                    </div>
-                    <span className="text-sm font-semibold text-slate-400 sm:text-right">{item.meta}</span>
-                  </div>
-                ))}
-              </div>
-              <Link href="/trust-safety" className="ga-text-link mt-8">
-                Read our trust approach
+        <section className="ga-grid-bg relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_45%,rgba(66,214,199,0.1),transparent_34%),radial-gradient(circle_at_15%_30%,rgba(228,189,69,0.09),transparent_32%)]" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-[90rem] items-center gap-12 overflow-hidden rounded-[1.7rem] border border-[#e4bd45]/30 bg-[#070b12]/90 p-7 shadow-[0_38px_110px_rgba(0,0,0,0.38)] sm:p-12 lg:grid-cols-[1fr_0.55fr] lg:p-14">
+            <div className="relative z-10">
+              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-[#42d6c7]">Early access preview</p>
+              <h2 className="mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1] tracking-[-0.05em] text-white sm:text-6xl">Preview a future Florida construction intake.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">See the topics a future, owner-approved early-access intake could cover—without submitting or storing information.</p>
+              <p className="mt-4 flex items-center gap-2 text-sm leading-6 text-slate-400">
+                <Circle className="size-4 text-[#e4bd45]" aria-hidden="true" />
+                The preview does not accept applications, send data, or connect to an endpoint.
+              </p>
+              <Link href="/early-access" className="ga-button-secondary mt-8 justify-center py-3.5">
+                View Early Access Preview
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
-          </div>
-        </section>
 
-        <section className="border-t border-white/10 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="mx-auto grid max-w-[90rem] gap-10 rounded-2xl border border-[#d4af37]/35 bg-[linear-gradient(135deg,rgba(212,175,55,0.08),rgba(66,214,199,0.035))] p-7 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#42d6c7]">Early access preview</p>
-              <h2 className="mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1.02] tracking-[-0.05em] text-white sm:text-6xl">Preview a future Florida intake.</h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">See the topics a future, owner-approved early-access intake could cover.</p>
-              <p className="mt-4 flex items-center gap-2 text-sm leading-6 text-slate-400">
-                <Circle className="size-4 text-[#42d6c7]" aria-hidden="true" />
-                The preview does not send, store, or submit information.
-              </p>
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="absolute -inset-7 rounded-full border border-[#42d6c7]/10" aria-hidden="true" />
+              <div className="relative rotate-[2deg] rounded-[2.4rem] border border-white/15 bg-[#03050a] p-2.5 shadow-2xl">
+                <div className="mx-auto mb-2 h-1.5 w-16 rounded-full bg-white/15" />
+                <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#080c13] p-5">
+                  <p className="text-xs font-black text-white">GROWTH<span className="text-[#e4bd45]">AGENT</span></p>
+                  <p className="mt-10 text-xs font-bold uppercase tracking-[0.16em] text-[#42d6c7]">Preview only</p>
+                  <p className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.04em] text-white">A future intake, shown safely.</p>
+                  <div className="mt-6 space-y-3">
+                    {["Primary trade", "Florida service area", "Evidence expectations"].map((item) => <div key={item} className="rounded-lg border border-white/10 bg-black/20 px-3 py-3 text-xs text-slate-500">{item}</div>)}
+                  </div>
+                  <div className="mt-4 rounded-lg border border-[#e4bd45]/30 bg-[#e4bd45]/[0.08] px-3 py-3 text-center text-xs font-extrabold text-[#f2c94c]">Early Access Preview</div>
+                </div>
+              </div>
             </div>
-            <Link href="/early-access" className="ga-button-secondary justify-center py-3.5">
-              View Early Access Preview
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
           </div>
         </section>
       </main>

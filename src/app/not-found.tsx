@@ -17,7 +17,7 @@ export default function NotFound() {
               Back to Home
             </Link>
             <Link href="/early-access" className="ga-button justify-center">
-              Join Early Access
+              View Early Access Preview
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>

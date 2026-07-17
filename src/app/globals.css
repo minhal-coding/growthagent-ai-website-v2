@@ -163,6 +163,23 @@ summary {
   background-position: center top;
 }
 
+.ga-blueprint {
+  background-image:
+    linear-gradient(rgba(66, 214, 199, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 214, 199, 0.035) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 49.7%, rgba(228, 189, 69, 0.035) 50%, transparent 50.3%);
+  background-size: 28px 28px, 28px 28px, 140px 140px;
+  background-position: center;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.ga-command-shell {
+  box-shadow:
+    0 38px 120px rgba(0, 0, 0, 0.56),
+    0 0 0 1px rgba(66, 214, 199, 0.025),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
 @media (max-width: 640px) {
   .ga-grid-bg {
     background-size: 24px 24px;

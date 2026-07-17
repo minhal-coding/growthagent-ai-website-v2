@@ -24,6 +24,7 @@ for (const banned of [
   "team will review",
   "requests are reviewed by a person",
   "Request Early Access",
+  "Join Early Access",
   "Join Florida Early Access",
   "Request a Pilot",
 ]) assert(!source.toLowerCase().includes(banned.toLowerCase()), `Banned claim remains: ${banned}`);
@@ -43,6 +44,20 @@ assert(spline.includes("Load optional 3D scene"), "Spline explicit-load action i
 assert(spline.includes("matchMedia(\"(prefers-reduced-motion: reduce)\")"), "Spline reduced-motion guard is missing");
 assert(spline.includes("aria-hidden=\"true\""), "Spline canvas is not hidden from accessibility APIs");
 assert(spline.includes("10000"), "Spline bounded timeout is missing");
+assert(spline.includes("connects to Spline") && spline.includes("unpkg.com"), "Optional 3D disclosure must name both Spline and unpkg.com");
+const splineImportIndex = spline.indexOf('import("@splinetool/runtime")');
+const reducedGuardIndex = spline.lastIndexOf('matchMedia("(prefers-reduced-motion: reduce)")', splineImportIndex);
+assert(spline.indexOf("if (!loadRequested") < splineImportIndex, "Spline runtime import is not gated by explicit activation");
+assert(reducedGuardIndex !== -1 && reducedGuardIndex < splineImportIndex, "Spline runtime import is not guarded by reduced-motion detection");
+
+const privacy = await readFile(path.join(root, "src/components/legal-page.tsx"), "utf8");
+assert(privacy.includes("prod.spline.design") && privacy.includes("unpkg.com"), "Privacy preview must name both external 3D services");
+
+const notFound = await readFile(path.join(root, "src/app/not-found.tsx"), "utf8");
+assert(notFound.includes('href="/early-access"') && notFound.includes("View Early Access Preview"), "404 CTA must link to the Early Access Preview");
+
+assert(!/localStorage|sessionStorage|indexedDB|navigator\.sendBeacon/.test(source), "Client-side storage or beacon behavior was added");
+assert(!/google-analytics|googletagmanager|gtag\(|posthog|mixpanel|plausible|segment\.com/i.test(source), "Analytics behavior was added");
 
 const robot = await readFile(path.join(root, "src/components/ui/growth-agent-robot-orbit.tsx"), "utf8");
 assert(!robot.includes("<button"), "Static workflow stages still use buttons");
@@ -74,6 +89,17 @@ try {
     assert(/<meta property="og:description" content="[^"]+"/.test(html), `${relative} lacks an Open Graph description`);
     assert(/<meta name="twitter:description" content="[^"]+"/.test(html), `${relative} lacks a Twitter description`);
   }
+  const publicHtmlFiles = (await filesUnder(out)).filter((file) => file.endsWith(".html"));
+  const exportedHtml = (await Promise.all(publicHtmlFiles.map((file) => readFile(file, "utf8")))).join("\n");
+  for (const banned of ["Join Early Access", "Join Florida Early Access", "Request Early Access", "Request a Pilot"]) {
+    assert(!exportedHtml.toLowerCase().includes(banned.toLowerCase()), `Exported public page contains prohibited conversion wording: ${banned}`);
+  }
+  const notFoundHtml = await readFile(path.join(out, "404.html"), "utf8");
+  assert(notFoundHtml.includes("View Early Access Preview"), "Exported 404 CTA does not say View Early Access Preview");
+  const productHtml = await readFile(path.join(out, "product/index.html"), "utf8");
+  assert(productHtml.includes("Spline") && productHtml.includes("unpkg.com"), "Exported product disclosure does not name Spline and unpkg.com");
+  const privacyHtml = await readFile(path.join(out, "privacy/index.html"), "utf8");
+  assert(privacyHtml.includes("prod.spline.design") && privacyHtml.includes("unpkg.com"), "Exported Privacy preview does not name both external 3D services");
   const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
   assert(!sitemap.includes("<url>"), "Preview sitemap contains indexable URLs");
   const robots = await readFile(path.join(out, "robots.txt"), "utf8");

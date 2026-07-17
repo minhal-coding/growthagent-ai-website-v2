@@ -7,7 +7,7 @@ const privacySections = [
   ["Public-source information", "The planned product may organize information from selected public permit, planning, and procurement sources. Source access, reuse terms, and data handling must be validated for each workflow."],
   ["Demonstration data", "Records shown on this website are fictional demonstration data and do not represent customer, contact, or production records."],
   ["AI-assisted review", "The planned workflow may use AI to summarize or organize public-source context. A person remains responsible for reviewing the source and deciding what happens next."],
-  ["Optional Spline scene", "The product page does not contact Spline by default. Only choosing “Load optional 3D scene” requests the externally hosted scene from that third-party service. Reduced-motion visitors receive the local fallback instead. Owner approval of the dependency, licensing, and final third-party disclosure is still required."],
+  ["Optional Spline scene", "The product page contacts neither Spline nor unpkg.com by default. Only choosing “Load optional 3D scene” requests the externally hosted scene from prod.spline.design and may load supporting Spline modelling WebAssembly runtime assets from unpkg.com. Reduced-motion visitors receive the local fallback instead. Owner approval of the final dependency, licensing decision, and third-party disclosure is still required."],
   ["Changes before launch", "This notice will be updated before any public early-access form or production service collects personal information."],
 ];
 

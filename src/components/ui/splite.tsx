@@ -87,7 +87,7 @@ export function SplineScene({ scene, className }: { scene: string; className?: s
             {status === "consent" || status === "error" ? (
               <div className="mt-5">
                 <button type="button" onClick={requestLoad} className="ga-button mx-auto justify-center">Load optional 3D scene</button>
-                <p className="mt-3 text-sm leading-6 text-slate-300">Loading the optional scene connects to Spline, a third-party service.</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300">Loading the optional 3D scene connects to Spline and may load supporting runtime assets from unpkg.com. Nothing is loaded until you choose to continue.</p>
               </div>
             ) : null}
           </div>
