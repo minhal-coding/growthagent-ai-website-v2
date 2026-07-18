@@ -8,9 +8,9 @@ import { HomepageEarlyAccess } from "@/components/homepage-early-access";
 import { PageShell } from "@/components/site-chrome";
 
 const supportTiles = [
-  { title: "Source-backed", text: "Designed to keep evidence beside each example record.", icon: FileCheck2, accent: "text-[#42d6c7]" },
-  { title: "Service area focused", text: "Geographic fit stays an explicit human review step.", icon: MapPinned, accent: "text-[#e4bd45]" },
-  { title: "Human-reviewed", text: "A person remains responsible for every next step.", icon: UserCheck, accent: "text-[#42d6c7]" },
+  { title: "Source context preserved", text: "Designed to keep evidence beside each example record.", icon: FileCheck2, accent: "text-[#42d6c7]" },
+  { title: "Service-area focused", text: "Geographic fit stays an explicit human review step.", icon: MapPinned, accent: "text-[#e4bd45]" },
+  { title: "Designed for human review", text: "A person remains responsible for every next step.", icon: UserCheck, accent: "text-[#42d6c7]" },
 ];
 
 export function MarketingHome() {

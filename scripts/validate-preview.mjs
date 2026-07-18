@@ -1,4 +1,5 @@
 import { readFile, readdir, stat } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 
 const root = process.cwd();
@@ -64,6 +65,9 @@ assert(marketingHome.includes("ConstructionOpportunityPreview"), "Homepage comma
 assert(marketingHome.includes("FloridaTrustSection"), "Homepage Florida map and trust ledger are missing");
 assert(marketingHome.includes("HomepageCinematicWorkflow"), "Homepage four-step cinematic workflow is missing");
 assert(marketingHome.includes("HomepageEarlyAccess"), "Homepage premium early-access preview is missing");
+for (const valueTile of ["Source context preserved", "Service-area focused", "Designed for human review"]) {
+  assert(marketingHome.includes(valueTile), `Homepage contractor-value strip is missing: ${valueTile}`);
+}
 assert(!marketingHome.includes("HomepageDivisionTeaser"), "Homepage still contains the 14-division teaser excluded by the locked reference");
 assert(!marketingHome.includes("LeadListComparison"), "Homepage still contains the lead-list comparison excluded by the locked reference");
 assert(!marketingHome.includes("DivisionExplorer"), "Homepage still bundles the full interactive division explorer");
@@ -87,6 +91,8 @@ for (const [asset, maxBytes] of [
 }
 const referenceLogo = await stat(path.join(root, "public", "brand", "growthagent-ai-reference-lockup.png"));
 assert(referenceLogo.size <= 150000, `Reference logo exceeds its optimized-size budget (${referenceLogo.size} bytes)`);
+const referenceLogoBytes = await readFile(path.join(root, "public", "brand", "growthagent-ai-reference-lockup.png"));
+assert(createHash("sha256").update(referenceLogoBytes).digest("hex") === "fb25e522d8f96b54a55ea421241215dafd16069279ac576f3bf2126b2bef0276", "Exact owner-supplied logo asset has changed");
 
 const motion = await readFile(path.join(root, "src/components/ui/motion-reveal.tsx"), "utf8");
 const globalCss = await readFile(path.join(root, "src/app/globals.css"), "utf8");
