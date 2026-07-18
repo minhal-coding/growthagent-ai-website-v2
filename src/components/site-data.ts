@@ -14,7 +14,6 @@ import {
 export const navigation = [
   { label: "Product", href: "/product" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Divisions", href: "/divisions" },
   { label: "Florida Launch", href: "/florida-launch" },
   { label: "Trust & Safety", href: "/trust-safety" },
   { label: "About", href: "/about" },

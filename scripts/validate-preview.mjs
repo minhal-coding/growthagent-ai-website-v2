@@ -60,7 +60,12 @@ for (const unsupported of ["pricing table", "customer logo", "client logo", "tes
   assert(!source.toLowerCase().includes(unsupported), `Unsupported marketing pattern remains: ${unsupported}`);
 }
 
-assert(marketingHome.includes("HomepageDivisionTeaser"), "Homepage does not contain the compact 14-division teaser");
+assert(marketingHome.includes("ConstructionOpportunityPreview"), "Homepage command center preview is missing");
+assert(marketingHome.includes("FloridaTrustSection"), "Homepage Florida map and trust ledger are missing");
+assert(marketingHome.includes("HomepageCinematicWorkflow"), "Homepage four-step cinematic workflow is missing");
+assert(marketingHome.includes("HomepageEarlyAccess"), "Homepage premium early-access preview is missing");
+assert(!marketingHome.includes("HomepageDivisionTeaser"), "Homepage still contains the 14-division teaser excluded by the locked reference");
+assert(!marketingHome.includes("LeadListComparison"), "Homepage still contains the lead-list comparison excluded by the locked reference");
 assert(!marketingHome.includes("DivisionExplorer"), "Homepage still bundles the full interactive division explorer");
 assert(!marketingHome.includes("OpportunityAnatomy"), "Homepage still renders the full opportunity anatomy");
 assert(!marketingHome.includes("SystemOrganizesVisual"), "Homepage still renders the full system-organizes section");
@@ -80,6 +85,8 @@ for (const [asset, maxBytes] of [
   const assetStat = await stat(path.join(root, "public", asset));
   assert(assetStat.size <= maxBytes, `${asset} exceeds its optimized-size budget (${assetStat.size} bytes)`);
 }
+const referenceLogo = await stat(path.join(root, "public", "brand", "growthagent-ai-reference-lockup.png"));
+assert(referenceLogo.size <= 150000, `Reference logo exceeds its optimized-size budget (${referenceLogo.size} bytes)`);
 
 const motion = await readFile(path.join(root, "src/components/ui/motion-reveal.tsx"), "utf8");
 const globalCss = await readFile(path.join(root, "src/app/globals.css"), "utf8");
@@ -162,6 +169,9 @@ try {
   const homeHtml = await readFile(path.join(out, "index.html"), "utf8");
   const howItWorksHtml = await readFile(path.join(out, "how-it-works/index.html"), "utf8");
   assert(!homeHtml.includes("Every signal should lead back to evidence."), "Exported homepage still contains the full product anatomy");
+  assert(!homeHtml.includes("Built around 14 construction divisions"), "Exported homepage still contains the removed divisions explorer");
+  assert(!homeHtml.includes("More than a lead list"), "Exported homepage still contains the removed comparison section");
+  assert(homeHtml.includes("Starting in Florida") && homeHtml.includes("From public record to review-ready opportunity") && homeHtml.includes("Help shape the Florida launch"), "Exported homepage is missing a locked-reference section");
   assert(productHtml.includes("Every signal should lead back to evidence."), "Exported product route is missing the full opportunity anatomy");
   assert(howItWorksHtml.includes("One record. Six stages. One human decision."), "Exported How It Works route is missing its fictional walkthrough");
   assert(productHtml.includes("Spline") && productHtml.includes("unpkg.com"), "Exported product disclosure does not name Spline and unpkg.com");
