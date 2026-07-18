@@ -1,15 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Circle, FileCheck2, HardHat, MapPinned, UserCheck } from "lucide-react";
 
 import { CinematicWorkflow } from "@/components/cinematic-workflow";
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
-import { DivisionExplorer, DivisionSystemLabel } from "@/components/division-explorer";
 import { FloridaTrustSection } from "@/components/florida-trust-section";
+import { HomepageDivisionTeaser } from "@/components/homepage-division-teaser";
 import { LeadListComparison } from "@/components/lead-list-comparison";
-import { OpportunityAnatomy } from "@/components/opportunity-anatomy";
-import { SourceCategoriesSection, SystemOrganizesVisual } from "@/components/product-expansion-sections";
-import { PageShell, SectionHeading } from "@/components/site-chrome";
+import { PageShell } from "@/components/site-chrome";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 
 export function MarketingHome() {
@@ -49,11 +46,10 @@ export function MarketingHome() {
                 <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#e4bd45]" aria-hidden="true" /> Fictional demonstration data</span>
                 <span className="inline-flex items-center gap-2"><Circle className="size-3 text-[#42d6c7]" aria-hidden="true" /> Human decision required</span>
               </div>
-              <Image src="/construction-blueprint.png" alt="" width={1800} height={600} className="pointer-events-none mt-7 h-auto w-full max-w-2xl opacity-50 mix-blend-screen" aria-hidden="true" priority />
+              <div className="ga-blueprint-art pointer-events-none mt-7 aspect-[3/1] w-full max-w-2xl bg-contain bg-bottom bg-no-repeat opacity-50" aria-hidden="true" />
             </MotionReveal>
 
             <MotionReveal className="relative min-w-0 xl:pb-20 xl:pt-16" delay={0.1} y={14}>
-              <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(66,214,199,0.11),transparent_67%)]" aria-hidden="true" />
               <div className="relative">
                 <ConstructionOpportunityPreview compact />
               </div>
@@ -70,40 +66,14 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <CinematicWorkflow />
+        <CinematicWorkflow compact />
+        <LeadListComparison compact />
+        <HomepageDivisionTeaser />
+        <FloridaTrustSection compact />
 
-        <LeadListComparison />
-
-        <section id="divisions" className="ga-content-visibility relative overflow-hidden border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(228,189,69,0.07),transparent_35%)]" aria-hidden="true" />
-          <div className="relative mx-auto max-w-[90rem]">
-            <DivisionSystemLabel />
-            <div className="mt-5 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
-              <SectionHeading title="Organized around 14 major construction divisions." text="The planned taxonomy helps Florida construction teams narrow candidate records by the work they pursue. Every division is planned or under validation; none is represented as active coverage." />
-              <Link href="/divisions" className="ga-text-link">View division details<ArrowRight className="size-4" aria-hidden="true" /></Link>
-            </div>
-            <div className="mt-12"><DivisionExplorer showRouteLink /></div>
-          </div>
-        </section>
-
-        <SourceCategoriesSection />
-        <SystemOrganizesVisual />
-
-        <section id="product" className="ga-content-visibility border-y border-white/10 bg-[#05080d] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="mx-auto max-w-[90rem]">
-            <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
-              <SectionHeading label="Opportunity anatomy" title="See what a review-ready opportunity could contain." text="This fictional example separates source facts, customer-fit signals, and the human-controlled decision so the product direction is understandable without implying live data." />
-              <Link href="/product" className="ga-text-link">Explore the product<ArrowRight className="size-4" aria-hidden="true" /></Link>
-            </div>
-            <div className="mt-12"><OpportunityAnatomy /></div>
-          </div>
-        </section>
-
-        <FloridaTrustSection />
-
-        <section className="ga-grid-bg relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_45%,rgba(66,214,199,0.1),transparent_34%),radial-gradient(circle_at_15%_30%,rgba(228,189,69,0.09),transparent_32%)]" aria-hidden="true" />
-          <div className="relative mx-auto grid max-w-[90rem] items-center gap-12 overflow-hidden rounded-[1.7rem] border border-[#e4bd45]/30 bg-[#070b12]/90 p-7 shadow-[0_38px_110px_rgba(0,0,0,0.38)] sm:p-12 lg:grid-cols-[1fr_0.55fr] lg:p-14">
+        <section className="ga-content-visibility ga-grid-bg relative overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_45%,rgba(66,214,199,0.08),transparent_38%)]" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-[90rem] items-center gap-10 overflow-hidden rounded-[1.7rem] border border-[#e4bd45]/30 bg-[#070b12]/95 p-7 shadow-[0_28px_80px_rgba(0,0,0,0.32)] sm:p-10 lg:grid-cols-[1fr_0.48fr] lg:p-12">
             <div className="relative z-10">
               <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-[#42d6c7]">Early access preview</p>
               <h2 className="mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1] tracking-[-0.05em] text-white sm:text-6xl">Preview a future Florida construction intake.</h2>

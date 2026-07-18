@@ -28,10 +28,13 @@
 }
 
 :root {
+  --ga-gold-primary: #e4bd45;
+  --ga-gold-highlight: #f2c94c;
+  --ga-gold-rgb: 228 189 69;
   --background: #05070d;
   --foreground: #f8fafc;
   --card: #090d14;
-  --primary: #e4bd45;
+  --primary: var(--ga-gold-primary);
   --border: rgba(255, 255, 255, 0.12);
 }
 
@@ -108,15 +111,15 @@ summary {
 }
 
 .ga-button {
-  border: 1px solid #e0b93f;
-  background: #e4bd45;
+  border: 1px solid var(--ga-gold-primary);
+  background: var(--ga-gold-primary);
   color: #080a0f;
-  box-shadow: 0 14px 36px rgba(212, 175, 55, 0.13);
+  box-shadow: 0 14px 36px rgb(var(--ga-gold-rgb) / 0.13);
 }
 
 .ga-button:hover {
   transform: translateY(-1px);
-  background: #f2cb52;
+  background: var(--ga-gold-highlight);
 }
 
 .ga-button-secondary {
@@ -185,6 +188,7 @@ summary {
 }
 
 .ga-blueprint {
+  contain: paint;
   background-image:
     linear-gradient(rgba(66, 214, 199, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(66, 214, 199, 0.035) 1px, transparent 1px),
@@ -192,6 +196,18 @@ summary {
   background-size: 28px 28px, 28px 28px, 140px 140px;
   background-position: center;
   mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.ga-blueprint-art {
+  contain: paint;
+  background-image: url("/construction-blueprint.webp");
+}
+
+@supports (content-visibility: auto) {
+  .ga-content-visibility {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 780px;
+  }
 }
 
 .ga-command-shell {
@@ -236,6 +252,10 @@ summary {
 @media (max-width: 640px) {
   .ga-grid-bg {
     background-size: 24px 24px;
+  }
+
+  .ga-blueprint-art {
+    background-image: url("/construction-blueprint-mobile.webp");
   }
 }
 

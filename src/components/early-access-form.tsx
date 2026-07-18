@@ -6,7 +6,7 @@ export function EarlyAccessForm({ compact = false }: { compact?: boolean }) {
       aria-labelledby="early-access-preview-title"
       className={`border border-white/15 bg-[#090d14] shadow-[0_30px_90px_rgba(0,0,0,0.3)] ${compact ? "rounded-[1.7rem] p-4" : "rounded-2xl p-5 sm:p-7"}`}
     >
-      <div id="form-disclosure" role="note" className="mb-5 rounded-xl border border-[#f2c94c]/45 bg-[#d4af37]/[0.08] p-3.5 text-xs font-semibold leading-5 text-slate-100">
+      <div id="form-disclosure" role="note" className="mb-5 rounded-xl border border-[#f2c94c]/45 bg-[#e4bd45]/[0.08] p-3.5 text-xs font-semibold leading-5 text-slate-100">
         <span className="flex items-start gap-2.5">
           <LockKeyhole className="mt-0.5 size-4 shrink-0 text-[#f2c94c]" aria-hidden="true" />
           <span><strong id="early-access-preview-title" className="text-white">Preview only</strong> — nothing entered here is sent, stored, or reviewed. Do not enter personal information.</span>

@@ -17,6 +17,9 @@ async function filesUnder(directory) {
 
 const sourceFiles = (await filesUnder(path.join(root, "src"))).filter((file) => /\.(ts|tsx)$/.test(file));
 const source = (await Promise.all(sourceFiles.map((file) => readFile(file, "utf8")))).join("\n");
+const marketingHome = await readFile(path.join(root, "src/components/marketing-home.tsx"), "utf8");
+const productPage = await readFile(path.join(root, "src/app/product/page.tsx"), "utf8");
+const howItWorksPage = await readFile(path.join(root, "src/app/how-it-works/page.tsx"), "utf8");
 const requiredDivisions = [
   "Division 03 — Concrete",
   "Division 04 — Masonry",
@@ -57,12 +60,35 @@ for (const unsupported of ["pricing table", "customer logo", "client logo", "tes
   assert(!source.toLowerCase().includes(unsupported), `Unsupported marketing pattern remains: ${unsupported}`);
 }
 
+assert(marketingHome.includes("HomepageDivisionTeaser"), "Homepage does not contain the compact 14-division teaser");
+assert(!marketingHome.includes("DivisionExplorer"), "Homepage still bundles the full interactive division explorer");
+assert(!marketingHome.includes("OpportunityAnatomy"), "Homepage still renders the full opportunity anatomy");
+assert(!marketingHome.includes("SystemOrganizesVisual"), "Homepage still renders the full system-organizes section");
+assert(productPage.includes("OpportunityAnatomy") && productPage.includes("LeadListComparison"), "Product route does not own the full opportunity anatomy and comparison");
+assert(howItWorksPage.includes("FictionalProcessWalkthrough"), "How It Works route lacks its concise fictional process walkthrough");
+assert(!howItWorksPage.includes("OpportunityAnatomy"), "How It Works duplicates the full product anatomy");
+
+for (const oldAsset of ["construction-blueprint.png", "florida-validation-map.png"]) {
+  assert(!source.includes(oldAsset), `Source still references superseded PNG asset: ${oldAsset}`);
+}
+for (const [asset, maxBytes] of [
+  ["construction-blueprint.webp", 60000],
+  ["construction-blueprint-mobile.webp", 20000],
+  ["florida-validation-map.webp", 45000],
+  ["florida-validation-map-mobile.webp", 15000],
+]) {
+  const assetStat = await stat(path.join(root, "public", asset));
+  assert(assetStat.size <= maxBytes, `${asset} exceeds its optimized-size budget (${assetStat.size} bytes)`);
+}
+
 const motion = await readFile(path.join(root, "src/components/ui/motion-reveal.tsx"), "utf8");
 const globalCss = await readFile(path.join(root, "src/app/globals.css"), "utf8");
 assert(motion.includes("useReducedMotion"), "Framer Motion components do not inspect reduced-motion preference");
 assert(globalCss.includes("@media (prefers-reduced-motion: reduce)"), "Global reduced-motion safeguard is missing");
 assert(globalCss.includes(".ga-glow-card::before") && globalCss.includes("display: none !important"), "Reduced motion does not disable nonessential glow/shine effects");
 assert(motion.includes("ga-motion-safe") && globalCss.includes(".ga-motion-safe") && globalCss.includes("opacity: 1 !important"), "Reduced motion can leave reveal content hidden");
+assert(globalCss.includes("--ga-gold-primary: #e4bd45") && globalCss.includes("--ga-gold-highlight: #f2c94c"), "Consolidated gold brand tokens are missing");
+assert(!/#d4af37|#f6d665|#e0b93f|#f2cb52|rgba\(212,\s*175,\s*55/i.test(source + globalCss), "A superseded one-off gold value remains");
 
 const demo = await readFile(path.join(root, "src/components/construction-opportunity-preview.tsx"), "utf8");
 assert((demo.match(/Fictional example/g) ?? []).length >= 3, "Fewer than three fictional record labels");
@@ -133,6 +159,11 @@ try {
   const notFoundHtml = await readFile(path.join(out, "404.html"), "utf8");
   assert(notFoundHtml.includes("View Early Access Preview"), "Exported 404 CTA does not say View Early Access Preview");
   const productHtml = await readFile(path.join(out, "product/index.html"), "utf8");
+  const homeHtml = await readFile(path.join(out, "index.html"), "utf8");
+  const howItWorksHtml = await readFile(path.join(out, "how-it-works/index.html"), "utf8");
+  assert(!homeHtml.includes("Every signal should lead back to evidence."), "Exported homepage still contains the full product anatomy");
+  assert(productHtml.includes("Every signal should lead back to evidence."), "Exported product route is missing the full opportunity anatomy");
+  assert(howItWorksHtml.includes("One record. Six stages. One human decision."), "Exported How It Works route is missing its fictional walkthrough");
   assert(productHtml.includes("Spline") && productHtml.includes("unpkg.com"), "Exported product disclosure does not name Spline and unpkg.com");
   const privacyHtml = await readFile(path.join(out, "privacy/index.html"), "utf8");
   assert(privacyHtml.includes("prod.spline.design") && privacyHtml.includes("unpkg.com"), "Exported Privacy preview does not name both external 3D services");

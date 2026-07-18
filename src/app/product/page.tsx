@@ -4,6 +4,7 @@ import { ArrowRight, Circle } from "lucide-react";
 
 import { BuyerPipelineSection, SourceCategoriesSection, SystemOrganizesVisual } from "@/components/product-expansion-sections";
 import { ConstructionOpportunityPreview } from "@/components/construction-opportunity-preview";
+import { LeadListComparison } from "@/components/lead-list-comparison";
 import { OpportunityAnatomy } from "@/components/opportunity-anatomy";
 import { PageIntro, PageShell, SectionHeading } from "@/components/site-chrome";
 import { GrowthAgentRobotOrbit } from "@/components/ui/growth-agent-robot-orbit";
@@ -37,6 +38,7 @@ export default function ProductPage() {
           </div>
         </section>
 
+        <LeadListComparison />
         <BuyerPipelineSection />
         <SourceCategoriesSection />
 

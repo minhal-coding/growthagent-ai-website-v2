@@ -17,7 +17,7 @@ export function GrowthAgentRobotOrbit() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#42d6c7]">Demonstration experience</p>
           <h2 id="review-assistant-title" className="mt-1 text-lg font-extrabold text-white">A planned review assistant, not an autonomous sales team</h2>
         </div>
-        <span className="rounded-full border border-[#d4af37]/30 px-3 py-1.5 text-xs font-semibold text-[#f2c94c]">Human decision required</span>
+        <span className="rounded-full border border-[#e4bd45]/30 px-3 py-1.5 text-xs font-semibold text-[#f2c94c]">Human decision required</span>
       </div>
       <div className="grid lg:grid-cols-[1fr_1.05fr]">
         <div className="relative overflow-hidden border-b border-white/10 lg:border-b-0 lg:border-r">
@@ -32,7 +32,7 @@ export function GrowthAgentRobotOrbit() {
             <li key={stage.id} className="grid grid-cols-[auto_1fr_auto] items-start gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-4 text-left">
               <span className="grid size-10 place-items-center rounded-xl border border-white/10 text-[#42d6c7]"><stage.icon className="size-5" aria-hidden="true" /></span>
               <span><span className="block font-bold text-white">{stage.title}</span><span className="mt-1 block text-sm leading-6 text-slate-400">{stage.text}</span></span>
-              <span className="text-xs font-bold text-[#d4af37]">0{index + 1}</span>
+              <span className="text-xs font-bold text-[#e4bd45]">0{index + 1}</span>
             </li>
           ))}
         </ol>

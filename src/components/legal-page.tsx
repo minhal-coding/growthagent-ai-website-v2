@@ -42,7 +42,7 @@ export function LegalPage({ kind }: LegalPageProps) {
                 </section>
               ))}
             </div>
-            <p className="mt-8 rounded-xl border border-[#d4af37]/25 bg-[#d4af37]/[0.05] p-5 text-sm leading-6 text-slate-400">
+            <p className="mt-8 rounded-xl border border-[#e4bd45]/25 bg-[#e4bd45]/[0.05] p-5 text-sm leading-6 text-slate-400">
               Owner review is still required before launch, including final legal terms, privacy disclosures, source-use review, and any data-processing agreements.
             </p>
           </div>

@@ -186,7 +186,7 @@ export function ConstructionOpportunityPreview({ compact = false }: { compact?: 
               </div>
 
               <p className="mt-3 text-xs leading-5 text-slate-400">{selected.note}</p>
-              <div className="mt-3 flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-[#05070d]/75 p-3 backdrop-blur-sm">
+              <div className="mt-3 flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-[#05070d]/94 p-3">
                 <div className="min-w-0">
                   <p className="text-[0.62rem] font-extrabold uppercase tracking-[0.15em] text-slate-500">Illustrative source evidence</p>
                   <p className="mt-0.5 truncate text-xs font-semibold text-white">Example source-evidence slot</p>

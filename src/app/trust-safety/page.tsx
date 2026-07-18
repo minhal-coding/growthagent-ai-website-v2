@@ -25,7 +25,7 @@ export default function TrustSafetyPage() {
                 </span>
                 <h2 className="text-xl font-extrabold text-white">{item.title}</h2>
                 <p className="text-sm leading-6 text-slate-400">{item.text}</p>
-                <span className="text-sm font-semibold text-[#d4af37] md:text-right">{item.meta}</span>
+                <span className="text-sm font-semibold text-[#e4bd45] md:text-right">{item.meta}</span>
               </article>
             ))}
           </div>

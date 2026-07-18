@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Circle, FileCheck2, LockKeyhole, MapPin, Menu, ShieldCheck, UserCheck } from "lucide-react";
 
@@ -25,7 +24,7 @@ export function EarlyAccessPage() {
                     <p className="mt-7 flex items-start gap-2.5 text-sm leading-6 text-slate-400"><LockKeyhole className="mt-1 size-4 shrink-0 text-[#e4bd45]" aria-hidden="true" />This page does not accept applications or collect information.</p>
                     <Link href="/florida-launch" className="ga-text-link mt-6">Explore Florida Launch<ArrowRight className="size-4" aria-hidden="true" /></Link>
                   </div>
-                  <Image src="/construction-blueprint.png" alt="" width={1800} height={600} className="pointer-events-none absolute inset-x-0 bottom-0 w-[175%] max-w-none -translate-x-[12%] opacity-50 mix-blend-screen" aria-hidden="true" />
+                  <div className="ga-blueprint-art pointer-events-none absolute inset-x-0 bottom-0 aspect-[3/1] w-[175%] max-w-none -translate-x-[12%] bg-contain bg-bottom bg-no-repeat opacity-50" aria-hidden="true" />
                 </div>
 
                 <div className="p-4 sm:p-6 lg:p-7">
@@ -59,7 +58,7 @@ export function EarlyAccessPage() {
                     <p className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-xs text-slate-400"><ShieldCheck className="size-3.5 text-[#42d6c7]" aria-hidden="true" /> Evidence slot shown</p>
                     <p className="flex items-center gap-2 px-4 py-3 text-xs text-slate-400"><UserCheck className="size-3.5 text-[#42d6c7]" aria-hidden="true" /> Human review required</p>
                   </div>
-                  <Image src="/construction-blueprint.png" alt="" width={1800} height={600} className="pointer-events-none absolute inset-x-0 bottom-0 w-[185%] max-w-none -translate-x-[17%] opacity-32 mix-blend-screen" aria-hidden="true" />
+                  <div className="ga-blueprint-art pointer-events-none absolute inset-x-0 bottom-0 aspect-[3/1] w-[185%] max-w-none -translate-x-[17%] bg-contain bg-bottom bg-no-repeat opacity-32" aria-hidden="true" />
                 </div>
                 <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-white/10" aria-hidden="true" />
               </div>

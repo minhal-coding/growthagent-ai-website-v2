@@ -17,7 +17,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05070d]/92 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05070d]/96 backdrop-blur-md">
       <div className="mx-auto flex min-h-18 max-w-[90rem] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
         <BrandMark />
         <nav aria-label="Primary navigation" className="hidden items-center gap-0.5 xl:flex">
