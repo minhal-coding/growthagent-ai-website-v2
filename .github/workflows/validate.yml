@@ -37,3 +37,6 @@ jobs:
 
       - name: Build static site
         run: npm run build
+
+      - name: Preview credibility regression checks
+        run: npm test

@@ -1,10 +1,10 @@
-import { ContactPage } from "@/components/contact-page";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Contact",
-  description: "Book a demo with GrowthAgent AI.",
-};
+import { EarlyAccessPage } from "@/components/early-access-page";
+import { createPageMetadata } from "@/lib/site-metadata";
 
-export default function Contact() {
-  return <ContactPage />;
+export const metadata: Metadata = createPageMetadata({ title: "Contact Preview", description: "A nonfunctional preview with no contact endpoint or data collection.", path: "/contact", forceNoIndex: true });
+
+export default function ContactPage() {
+  return <EarlyAccessPage />;
 }

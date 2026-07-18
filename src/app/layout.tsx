@@ -1,101 +1,37 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { configuredSiteUrl, createPageMetadata, indexingEnabled } from "@/lib/site-metadata";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const description = "A preview of GrowthAgent AI's planned Florida construction workflow for evaluating public-source opportunity review.";
 
-const siteUrl = "https://growthagent.ai";
-const brandImage = "/brand/growthagent-ai-gradient.png";
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#05070d" };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "GrowthAgent AI - Your AI-Powered Sales Team",
-    template: "%s | GrowthAgent AI",
-  },
-  description:
-    "GrowthAgent AI researches leads, enriches contact data, personalizes outreach, tracks replies, automates follow-ups, books meetings, and keeps CRM records clean.",
-  keywords: [
-    "AI sales automation",
-    "AI outbound",
-    "lead research",
-    "email automation",
-    "CRM automation",
-    "sales agents",
-    "autonomous sales team",
-  ],
+  ...createPageMetadata({ title: "GrowthAgent AI | Florida Construction Opportunity Intelligence", description, path: "/" }),
+  keywords: ["Florida construction opportunities", "construction opportunity review", "Florida public records", "construction product preview"],
   authors: [{ name: "GrowthAgent AI" }],
-  icons: {
-    icon: "/brand/growthagent-ai-logo.png",
-    apple: "/brand/growthagent-ai-logo.png",
-  },
-  openGraph: {
-    title: "GrowthAgent AI - Your AI-Powered Sales Team",
-    description:
-      "An autonomous AI sales team for research, enrichment, outreach, replies, follow-ups, meetings, and CRM.",
-    url: siteUrl,
-    siteName: "GrowthAgent AI",
-    images: [
-      {
-        url: brandImage,
-        width: 1536,
-        height: 1536,
-        alt: "GrowthAgent AI intelligent growth systems logo",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "GrowthAgent AI - Your AI-Powered Sales Team",
-    description:
-      "Automate prospect research, personalized outreach, reply tracking, follow-ups, meetings, and CRM operations.",
-    images: [brandImage],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  icons: { icon: "/brand/growthagent-ai-logo.png", apple: "/brand/growthagent-ai-logo.png" },
 };
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebSite",
   name: "GrowthAgent AI",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  description:
-    "AI-powered sales automation platform that acts like a small autonomous sales team.",
-  offers: {
-    "@type": "Offer",
-    price: "99",
-    priceCurrency: "USD",
-  },
+  url: configuredSiteUrl,
+  description,
+  inLanguage: "en-US",
+  about: { "@type": "Thing", name: "Florida construction opportunity review" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
-    >
-      <body className="min-h-full bg-background text-foreground">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        {indexingEnabled && configuredSiteUrl ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /> : null}
         {children}
       </body>
     </html>
