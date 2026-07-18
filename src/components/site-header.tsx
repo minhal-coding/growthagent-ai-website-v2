@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, LockKeyhole, Menu, X } from "lucide-react";
 
 import { BrandMark } from "@/components/brand-mark";
 import { navigation } from "@/components/site-data";
+import { inviteOnlyAppUrl } from "@/lib/invite-only-app";
 
 function isCurrent(pathname: string, href: string) {
   return href === "/" ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
@@ -28,6 +29,17 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          {inviteOnlyAppUrl ? (
+            <a
+              href={inviteOnlyAppUrl}
+              rel="noreferrer"
+              aria-label="Open invitation-only application"
+              className="max-sm:!hidden inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-lg border border-white/15 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#42d6c7]/45 hover:bg-white/[0.06] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#42d6c7]"
+            >
+              <LockKeyhole className="size-4 text-[#e4bd45]" aria-hidden="true" />
+              Invitation access
+            </a>
+          ) : null}
           <Link href="/florida-launch" className="ga-button max-sm:!hidden">Explore Florida Launch<ArrowRight className="size-4" aria-hidden="true" /></Link>
           <details className="group relative lg:hidden" open={menuOpen} onToggle={(event) => setMenuOpen(event.currentTarget.open)}>
             <summary className="grid size-11 cursor-pointer list-none place-items-center rounded-xl border border-white/15 bg-white/[0.04] text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#42d6c7]" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}>
@@ -39,6 +51,17 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
+              {inviteOnlyAppUrl ? (
+                <a
+                  href={inviteOnlyAppUrl}
+                  rel="noreferrer"
+                  aria-label="Open invitation-only application"
+                  className="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 hover:border-[#42d6c7]/45 hover:bg-white/[0.06] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#42d6c7]"
+                >
+                  <LockKeyhole className="size-4 text-[#e4bd45]" aria-hidden="true" />
+                  Invitation access
+                </a>
+              ) : null}
               <Link href="/florida-launch" onClick={() => setMenuOpen(false)} className="ga-button mt-2 flex w-full justify-center">Explore Florida Launch<ArrowRight className="size-4" aria-hidden="true" /></Link>
             </nav>
           </details>

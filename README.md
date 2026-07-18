@@ -64,6 +64,16 @@ NEXT_PUBLIC_ENABLE_INDEXING=true
 
 Do not add an actual URL to the repository. A preview host should inject the approved value at build time. If an isolated preview is approved later, configure it against this repository only, use a distinct URL, and do not reuse production DNS or production deployment credentials.
 
+## Invitation-only application access
+
+The website can show a single **Invitation access** link in the desktop header and mobile navigation when an owner supplies the private application's approved access URL at build time:
+
+```bash
+NEXT_PUBLIC_INVITE_ONLY_APP_URL=<owner-supplied-https-url>
+```
+
+The repository does not provide a default URL. When the variable is absent, the link is not rendered. The configured value must be an absolute HTTPS URL without embedded credentials, query parameters, or fragments so access tokens and other secrets cannot be published in the static site. This link is only an access path for people who already have an invitation; it does not add signup, account creation, intake, analytics, or a claim of general availability.
+
 ## Preview-only interactions
 
 - The early-access interface is a disabled visual preview. It has no form element or external endpoint and nothing entered is sent, stored, or reviewed.

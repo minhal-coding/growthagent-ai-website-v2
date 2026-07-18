@@ -21,6 +21,8 @@ const source = (await Promise.all(sourceFiles.map((file) => readFile(file, "utf8
 const marketingHome = await readFile(path.join(root, "src/components/marketing-home.tsx"), "utf8");
 const productPage = await readFile(path.join(root, "src/app/product/page.tsx"), "utf8");
 const howItWorksPage = await readFile(path.join(root, "src/app/how-it-works/page.tsx"), "utf8");
+const siteHeader = await readFile(path.join(root, "src/components/site-header.tsx"), "utf8");
+const inviteOnlyApp = await readFile(path.join(root, "src/lib/invite-only-app.ts"), "utf8");
 const requiredDivisions = [
   "Division 03 — Concrete",
   "Division 04 — Masonry",
@@ -47,6 +49,8 @@ for (const banned of [
   "Join Early Access",
   "Join Florida Early Access",
   "Request a Pilot",
+  "Sign Up",
+  "Create Account",
 ]) assert(!source.toLowerCase().includes(banned.toLowerCase()), `Banned claim remains: ${banned}`);
 
 const divisionData = await readFile(path.join(root, "src/components/division-data.ts"), "utf8");
@@ -113,6 +117,14 @@ assert(!intake.includes("onSubmit"), "Early-access preview contains submit behav
 assert(intake.includes("<fieldset disabled"), "Early-access preview fields are not disabled as a group");
 assert(intake.includes("nothing entered here is sent, stored, or reviewed"), "Pre-field collection warning is missing");
 
+assert(inviteOnlyApp.includes("process.env.NEXT_PUBLIC_INVITE_ONLY_APP_URL"), "Invitation-only app URL is not environment configured");
+assert(inviteOnlyApp.includes('url.protocol !== "https:"'), "Invitation-only app URL does not require HTTPS");
+assert(inviteOnlyApp.includes("url.username") && inviteOnlyApp.includes("url.password") && inviteOnlyApp.includes("url.search") && inviteOnlyApp.includes("url.hash"), "Invitation-only app URL does not reject embedded credentials or token-bearing URL parts");
+assert(!/https?:\/\//i.test(inviteOnlyApp), "Invitation-only app configuration contains a hard-coded URL");
+assert((siteHeader.match(/Open invitation-only application/g) ?? []).length === 2, "Desktop and mobile invitation links do not have an explicit accessible name");
+assert((siteHeader.match(/Invitation access/g) ?? []).length === 2, "Desktop and mobile invitation access paths are missing");
+assert((siteHeader.match(/rel="noreferrer"/g) ?? []).length === 2, "Invitation-only application links expose referrer information");
+
 const spline = await readFile(path.join(root, "src/components/ui/splite.tsx"), "utf8");
 assert(spline.includes("Load optional 3D scene"), "Spline explicit-load action is missing");
 assert(spline.includes("matchMedia(\"(prefers-reduced-motion: reduce)\")"), "Spline reduced-motion guard is missing");
@@ -169,6 +181,7 @@ try {
   for (const banned of ["Join Early Access", "Join Florida Early Access", "Request Early Access", "Request a Pilot"]) {
     assert(!exportedHtml.toLowerCase().includes(banned.toLowerCase()), `Exported public page contains prohibited conversion wording: ${banned}`);
   }
+  assert(!exportedHtml.includes("Invitation access"), "Unconfigured preview exposes an invitation-only application link");
   const notFoundHtml = await readFile(path.join(out, "404.html"), "utf8");
   assert(notFoundHtml.includes("View Early Access Preview"), "Exported 404 CTA does not say View Early Access Preview");
   const productHtml = await readFile(path.join(out, "product/index.html"), "utf8");
